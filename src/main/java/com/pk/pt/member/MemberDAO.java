@@ -1,0 +1,70 @@
+package com.pk.pt.member;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MemberDAO {
+	
+	@Autowired
+	private SqlSession ss;
+
+	public void join(Member m, HttpServletRequest req) {
+		try {
+			m.setTm_id(req.getParameter("tm_id"));
+			m.setTm_pw(req.getParameter("tm_pw"));
+			m.setTm_name(req.getParameter("tm_name"));
+
+			String tm_addr1 = req.getParameter("tm_addr1");
+			String tm_addr2 = req.getParameter("tm_addr2");
+			String tm_addr3 = req.getParameter("tm_addr3");
+			String tm_addr = tm_addr1 + "!" + tm_addr2 + "!" + tm_addr3;
+			m.setTm_addr(tm_addr);
+			
+			m.setTm_phone(req.getParameter("tm_phone"));
+			
+			if (ss.getMapper(MemberMapper.class).join(m) == 1) {
+				req.setAttribute("r", "가입 성공");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("r", "가입 실패");
+		}
+	}
+	
+	public void login(Member m, HttpServletRequest req) {
+		try {
+
+			String tm_id = req.getParameter("tm_id");
+			String tm_pw = req.getParameter("tm_pw");
+
+
+			Member inputMember = new Member(tm_id, tm_pw, null, null, null);
+
+			Member dbMember = ss.selectOne(("login"), inputMember);
+
+			if (dbMember != null) {
+				if (tm_pw.equals(dbMember.getTm_pw())) {
+					req.getSession().setAttribute("loginMember", dbMember);
+					req.getSession().setMaxInactiveInterval(10);
+					req.setAttribute("r","로그인 성공 ");
+				} else {
+					req.setAttribute("r", "비밀번호 오류");
+				}
+			} else {
+				req.setAttribute("r", "미가입 ID");
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("r", "DB 문제");
+		}
+	}
+
+	public void logout(HttpServletRequest req) {
+		req.getSession().setAttribute("loginMember", null);
+	}
+}
