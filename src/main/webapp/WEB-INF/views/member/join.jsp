@@ -7,14 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="member.join" method="post">
+<form action="member.join" method="post" name="joinForm" onsubmit="return joinCheck();">
 	<table border="1" id="joinTbl">
 		<tr>
 			<td>ID</td>
 		</tr>
 		<tr>
 			<td>
-				<input id="join_tm_id" name="tm_id" placeholder="ID" autocomplete="off" maxlength="10">
+				<input id="join_tm_id" name="tm_id" placeholder="한글/특수문자를 제외한 4~10자" autocomplete="off" maxlength="10">
 			</td>
 		</tr>
 		<tr>
@@ -22,7 +22,7 @@
 		</tr>
 		<tr>
 			<td>
-				<input id="join_tm_pw" name="tm_pw" placeholder="Password" autocomplete="off" type="password" maxlength="20">
+				<input id="join_tm_pw" name="tm_pw" placeholder="숫자와 특수문자를 포함한 4~20자" autocomplete="off" type="password" maxlength="20">
 			</td>
 		</tr>
 		<tr>
@@ -30,7 +30,7 @@
 		</tr>
 		<tr>
 			<td>
-				<input id="join_tm_pwChk" name="tm_pwChk" placeholder="Password Check" autocomplete="off" type="password" maxlength="20">
+				<input id="join_tm_pwChk" name="tm_pwChk" placeholder="pw 확인" autocomplete="off" type="password" maxlength="20">
 			</td>
 		</tr>
 		<tr>
@@ -38,7 +38,7 @@
 		</tr>
 		<tr>
 			<td>
-				<input id="join_tm_name" name="tm_name" placeholder="NAME" autocomplete="off" maxlength="15">
+				<input id="join_tm_name" name="tm_name" placeholder="2자 이상" autocomplete="off" maxlength="15">
 			</td>
 		</tr>
 		<tr>
@@ -48,7 +48,7 @@
 			<td>
 				<input id="join_tm_addr1" name="tm_addr1" placeholder="Zip Code"><br>
 				<input id="join_tm_addr2" name="tm_addr2" placeholder="Address"><br>
-				<input name="tm_addr3" placeholder="Detail Address" autocomplete="off"><br>
+				<input id="join_tm_addr3" name="tm_addr3" placeholder="Detail Address" autocomplete="off"><br>
 			</td>
 		</tr>
 		<tr>

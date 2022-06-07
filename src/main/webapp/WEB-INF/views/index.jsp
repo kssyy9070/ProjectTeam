@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="resources/js/jQuery.js"></script>
+<script type="text/javascript" src="resources/js/store_jQuery.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="resources/js/kimsyValidChecker.js"></script>
+<script type="text/javascript" src="resources/js/memberCheck.js"></script>
 </head>
 <body>
 	<table border="1">

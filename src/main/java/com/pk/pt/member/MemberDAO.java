@@ -18,12 +18,10 @@ public class MemberDAO {
 			m.setTm_pw(req.getParameter("tm_pw"));
 			m.setTm_name(req.getParameter("tm_name"));
 
-			String tm_addr1 = req.getParameter("tm_addr1");
-			String tm_addr2 = req.getParameter("tm_addr2");
-			String tm_addr3 = req.getParameter("tm_addr3");
-			String tm_addr = tm_addr1 + "!" + tm_addr2 + "!" + tm_addr3;
-			m.setTm_addr(tm_addr);
-
+			m.setTm_addr1(req.getParameter("tm_addr1"));
+			m.setTm_addr2(req.getParameter("tm_addr2"));
+			m.setTm_addr3(req.getParameter("tm_addr3"));
+	
 			m.setTm_phone(req.getParameter("tm_phone"));
 
 			if (ss.getMapper(MemberMapper.class).join(m) == 1) {
@@ -41,14 +39,14 @@ public class MemberDAO {
 			String tm_id = req.getParameter("tm_id");
 			String tm_pw = req.getParameter("tm_pw");
 
-			Member inputMember = new Member(tm_id, tm_pw, null, null, null);
+			Member inputMember = new Member(tm_id, tm_pw, null, null, null, null, null);
 
 			Member dbMember = ss.selectOne(("login"), inputMember);
 
 			if (dbMember != null) {
 				if (tm_pw.equals(dbMember.getTm_pw())) {
 					req.getSession().setAttribute("loginMember", dbMember);
-					req.getSession().setMaxInactiveInterval(10);
+					req.getSession().setMaxInactiveInterval(100);
 					req.setAttribute("r", "로그인 성공 ");
 				} else {
 					req.setAttribute("r", "비밀번호 오류");
@@ -72,18 +70,23 @@ public class MemberDAO {
 			String tm_id = req.getParameter("tm_id");
 			String tm_ppw = req.getParameter("tm_ppw");
 			String tm_pw = req.getParameter("tm_pw");
+			String tm_addr1 = req.getParameter("tm_addr1");
+			String tm_addr2 = req.getParameter("tm_addr2");
+			String tm_addr3 = req.getParameter("tm_addr3");
 			
 			m = (Member)req.getSession().getAttribute("loginMember");
 			
 			if (tm_ppw.equals(m.getTm_pw())) {
 				m.setTm_id(tm_id);
 				m.setTm_pw(tm_pw);
+				m.setTm_addr1(tm_addr1);
+				m.setTm_addr2(tm_addr2);
+				m.setTm_addr3(tm_addr3);
 				ss.getMapper(MemberMapper.class).update(m);
 				req.setAttribute("r", "수정 성공");
 			} else {
 				req.setAttribute("r", "비밀번호 오류");
 			}
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();

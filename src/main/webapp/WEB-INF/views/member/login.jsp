@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="member.login" method="post" name="loginForm">
+	<form action="member.login" method="post" name="loginForm" onsubmit="return loginCheck();">
 		<table border="1" id="loginTbl">
 		<tr>
 			<td>ID</td>
