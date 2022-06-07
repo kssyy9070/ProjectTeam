@@ -7,4 +7,10 @@
 	<select id="login" parameterType="com.pk.pt.member.Member" resultType="com.pk.pt.member.Member">
 		select * from tjd_member where tm_id=#{tm_id}
 	</select>
+	<update id="update" parameterType="com.pk.pt.member.Member">
+		update tjd_member set tm_pw=#{tm_pw} where tm_id=#{tm_id}	
+	</update>
+	<delete id="leave" parameterType="com.pk.pt.member.Member">
+		delete from tjd_MEMBER where tm_id=#{tm_id}
+	</delete>
 </mapper>

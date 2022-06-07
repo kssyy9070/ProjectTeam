@@ -52,4 +52,18 @@ public class MemberController {
 		req.setAttribute("cp", "member/mypage.jsp");
 		return "index";
 	}
+	
+	@RequestMapping(value = "/member.update", method = RequestMethod.POST)
+	public String update(Member m,HttpServletRequest req) {
+		MDAO.update(m, req);
+		req.setAttribute("cp", "member/mypage.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/member.leave",method = RequestMethod.GET)
+	public String leave(Member m,HttpServletRequest req) {
+		MDAO.leave(m, req);
+		req.setAttribute("cp", "home.jsp");
+		return "index";
+	}
 }

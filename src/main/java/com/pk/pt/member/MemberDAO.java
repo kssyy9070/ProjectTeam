@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MemberDAO {
-	
+
 	@Autowired
 	private SqlSession ss;
 
@@ -23,9 +23,9 @@ public class MemberDAO {
 			String tm_addr3 = req.getParameter("tm_addr3");
 			String tm_addr = tm_addr1 + "!" + tm_addr2 + "!" + tm_addr3;
 			m.setTm_addr(tm_addr);
-			
+
 			m.setTm_phone(req.getParameter("tm_phone"));
-			
+
 			if (ss.getMapper(MemberMapper.class).join(m) == 1) {
 				req.setAttribute("r", "가입 성공");
 			}
@@ -34,13 +34,12 @@ public class MemberDAO {
 			req.setAttribute("r", "가입 실패");
 		}
 	}
-	
+
 	public void login(Member m, HttpServletRequest req) {
 		try {
 
 			String tm_id = req.getParameter("tm_id");
 			String tm_pw = req.getParameter("tm_pw");
-
 
 			Member inputMember = new Member(tm_id, tm_pw, null, null, null);
 
@@ -50,7 +49,7 @@ public class MemberDAO {
 				if (tm_pw.equals(dbMember.getTm_pw())) {
 					req.getSession().setAttribute("loginMember", dbMember);
 					req.getSession().setMaxInactiveInterval(10);
-					req.setAttribute("r","로그인 성공 ");
+					req.setAttribute("r", "로그인 성공 ");
 				} else {
 					req.setAttribute("r", "비밀번호 오류");
 				}
@@ -66,5 +65,44 @@ public class MemberDAO {
 
 	public void logout(HttpServletRequest req) {
 		req.getSession().setAttribute("loginMember", null);
+	}
+
+	public void update(Member m, HttpServletRequest req) {
+		try {
+			String tm_id = req.getParameter("tm_id");
+			String tm_ppw = req.getParameter("tm_ppw");
+			String tm_pw = req.getParameter("tm_pw");
+			
+			m = (Member)req.getSession().getAttribute("loginMember");
+			
+			if (tm_ppw.equals(m.getTm_pw())) {
+				m.setTm_id(tm_id);
+				m.setTm_pw(tm_pw);
+				ss.getMapper(MemberMapper.class).update(m);
+				req.setAttribute("r", "수정 성공");
+			} else {
+				req.setAttribute("r", "비밀번호 오류");
+			}
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("r", "DB 문제");
+		}
+	}
+
+	public void leave(Member m, HttpServletRequest req) {
+		try {
+			m = (Member)req.getSession().getAttribute("loginMember");
+			
+			if (ss.getMapper(MemberMapper.class).leave(m)==1) {
+				logout(req);
+				req.setAttribute("r", "탈퇴 성공");
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("r", "탈퇴 실패");
+		}
 	}
 }
