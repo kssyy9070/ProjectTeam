@@ -87,7 +87,6 @@ public class MemberDAO {
 			} else {
 				req.setAttribute("r", "비밀번호 오류");
 			}
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();

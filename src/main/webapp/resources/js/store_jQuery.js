@@ -2,6 +2,7 @@ $(function() {
 	searchAddressEvent();
 });
 
+
 function searchAddressEvent() {
 	$("#join_tm_addr1, #join_tm_addr2, #myPage_tm_addr1, #myPage_tm_addr2").click(function() {
 		new daum.Postcode({

@@ -10,6 +10,7 @@ create table tjd_member(
 	tm_phone varchar2(11) not null
 );
 
+
 insert into tjd_member values('test1','test1','테스터1','12345','서울특별시 중구 세종대로 110','1층','01012345678');
 insert into tjd_member values('admin','123','관리자','12345','서울특별시 중구 세종대로 110','10층','01045671234');
 

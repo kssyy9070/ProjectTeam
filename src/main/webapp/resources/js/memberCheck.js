@@ -2,6 +2,7 @@ function loginCheck(){
 	let idInput = document.loginForm.login_tm_id;
 	let pwInput = document.loginForm.login_tm_pw;
 
+
 	if (isEmpty(idInput)){
 		alert("ID를 입력하세요.");
 		idInput.value = "";

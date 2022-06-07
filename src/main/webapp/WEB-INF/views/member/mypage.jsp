@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="member.update" method="post" name="myPageForm" onsubmit="return memberUpdateCheck();">
+	<form action="member.update" method="post" name="myPageForm"  onsubmit="return memberUpdateCheck();">
 		<table border="1">
 			<tr>
 				<td colspan="2">MyPage</td>

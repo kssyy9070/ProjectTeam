@@ -11,6 +11,7 @@ function lessThan(input, len) {
 	return (input.value.length < len);
 }
 
+
 // <input>을 넣었을 때
 // 한글/특수문자가 들어있으면 true, 아니면 false
 function containsHS(input) {
