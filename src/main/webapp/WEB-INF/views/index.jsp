@@ -142,7 +142,7 @@
 						<li class="list-inline-item"><a href="#" target="_blank"
 							title="youtube"><i class="bi bi-youtube"></i></a></li>
 					</ul>
-				</div>
+				</div> 
 			</div>
 		</div>
 		<hr class="p-0 m-0 b-0">
