@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pk.pt.goods.GoodsMapper">
+	<insert id="regGoods" parameterType="com.pk.pt.goods.Goods">
+	
+	insert into test_goods values(#{goods_id}, 
+	#{goods_name}, 
+	#{goods_price}, 
+	#{goods_stock},
+	#{goods_cate},
+	#{goods_detail},
+	SYSDATE,
+	SYSDATE) 
+	
+	</insert>
+	
+	<select id="getAllGoods" resultType="com.pk.pt.goods.Goods">
+	
+	select * from test_goods order by goods_regDate
+	
+	</select>
+	
+	<select id="goodsRead" parameterType="com.pk.pt.goods.Goods" resultType="com.pk.pt.goods.Goods">
+	
+	select * from test_goods where goods_id = #{goods_id}
+	
+	</select>
+	
+</mapper>
