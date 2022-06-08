@@ -13,4 +13,7 @@
 	<delete id="leave" parameterType="com.pk.pt.member.Member">
 		delete from tjd_MEMBER where tm_id=#{tm_id}
 	</delete>
+	<select id="getAllMember" resultType="com.pk.pt.member.Member">
+		select * from tjd_member where tm_id !='admin' order by tm_id
+	</select>
 </mapper>

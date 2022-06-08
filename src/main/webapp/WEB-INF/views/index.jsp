@@ -35,7 +35,12 @@
 			<form action="member.logout" method="get">
 				<input id="memberInfo" style="border: none; font-size: 10pt;text-align: center;"
 					value="${sessionScope.loginMember.tm_id }(${sessionScope.loginMember.tm_name})님"
-					readonly="readonly"> <a href="member.mypage.go"
+					readonly="readonly"> 
+					<c:if test="${sessionScope.loginMember.tm_id == 'admin'}">
+									<a href="adminPage.go" class="btn btn-light me-md-2 btn-sm">
+									관리자 페이지</a>
+					</c:if>
+					<a href="member.mypage.go"
 					class="btn btn-light me-md-2 btn-sm"> myPage</a>
 				<button id="logoutBtn" class="btn btn-light me-md-2 btn-sm">logout</button>
 			</form>

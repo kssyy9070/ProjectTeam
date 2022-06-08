@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class MemberDAO {
 
@@ -106,6 +107,14 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			req.setAttribute("r", "탈퇴 실패");
+		}
+	}
+	
+	public void getAllMember(HttpServletRequest req) {
+		try {
+			req.setAttribute("members", ss.getMapper(MemberMapper.class).getAllMember());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }
