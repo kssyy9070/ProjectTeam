@@ -23,6 +23,9 @@
 ::-webkit-scrollbar{
 	display: none;
 }
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bs-primary);
+}
 </style>
 </head>
 <body>
@@ -143,13 +146,13 @@
 						점심시간평일 13:00 - 14:00
 					</p>
 					<ul class="list-inline mt-4">
-						<li class="list-inline-item"><a href="#" target="_blank"
+						<li class="list-inline-item"><a href="https://twitter.com/" target="_blank"
 							title="twitter"><i class="bi bi-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="#" target="_blank"
+						<li class="list-inline-item"><a href="https://www.instagram.com/" target="_blank"
 							title="instagram"><i class="bi bi-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="#" target="_blank"
+						<li class="list-inline-item"><a href="https://www.facebook.com/" target="_blank"
 							title="facebook"><i class="bi bi-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="#" target="_blank"
+						<li class="list-inline-item"><a href="https://www.youtube.com/" target="_blank"
 							title="youtube"><i class="bi bi-youtube"></i></a></li>
 					</ul>
 				</div> 
