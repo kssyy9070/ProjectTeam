@@ -15,3 +15,29 @@ insert into tjd_member values('test1','test1','테스터1','12345','서울특별
 insert into tjd_member values('admin','123','관리자','12345','서울특별시 중구 세종대로 110','10층','01045671234');
 
 select * from tjd_member;
+
+delete from TJD_MEMBER where tm_id = 'test123';
+
+--------------------------------------
+
+create table tjd_review(
+	tr_no number(5) primary key,
+	tr_writer varchar2(10 char) not null,
+	tr_img varchar2(200 char) not null, 
+	tr_txt varchar2(250 char) not null,
+	tr_date date not null,
+	constraint review_writer
+		foreign key(tr_writer)
+		references tjd_member(tm_id)
+		on delete cascade,
+	constraint review_no
+		foreign key(tr_writer)
+		references test_goods(goods_id)
+		on delete cascade
+);
+
+create sequence tjd_review_seq; 
+
+insert into tjd_review values (tjd_review_seq.nextval, 'test123','dd','ddd',to_date(sysdate,'YYYY-MM-DD'));
+
+select * from TJD_REVIEW;
