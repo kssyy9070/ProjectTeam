@@ -36,7 +36,7 @@
 				<h1 class="jumbotron" style="text-align: center; margin: 50px 0;">${goodsRead.goods_id}</h1>
 			</div>
 			<div class="form-group goodsRead">
-				<form action="admin.update.success" method="post" id="updateForm"
+				<form action="admin.update.success?goods_id=${goodsRead.goods_id }" method="post" id="updateForm"
 					enctype="multipart/form-data">
 					<div class="form_section">
 						<div class="form_section_title">

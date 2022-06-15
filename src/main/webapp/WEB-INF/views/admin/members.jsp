@@ -46,7 +46,9 @@
 				<tr>
 					<th>회원ID</th>
 					<th>이름</th>
-					<th>주소</th>
+					<th>주소1</th>
+					<th>주소2</th>
+					<th>주소3</th>
 					<th>전화번호</th>
 				</tr>
 			</thead>
