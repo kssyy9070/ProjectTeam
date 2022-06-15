@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +20,14 @@
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="resources/js/kimsyValidChecker.js"></script>
 <script type="text/javascript" src="resources/js/memberCheck.js"></script>
+<style type="text/css">
+::-webkit-scrollbar{
+	display: none;
+}
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bs-primary);
+}
+</style>
 </head>
 <body>
 
@@ -138,13 +147,13 @@
 						점심시간평일 13:00 - 14:00
 					</p>
 					<ul class="list-inline mt-4">
-						<li class="list-inline-item"><a href="#" target="_blank"
+						<li class="list-inline-item"><a href="https://twitter.com/" target="_blank"
 							title="twitter"><i class="bi bi-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="#" target="_blank"
+						<li class="list-inline-item"><a href="https://www.instagram.com/" target="_blank"
 							title="instagram"><i class="bi bi-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="#" target="_blank"
+						<li class="list-inline-item"><a href="https://www.facebook.com/" target="_blank"
 							title="facebook"><i class="bi bi-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="#" target="_blank"
+						<li class="list-inline-item"><a href="https://www.youtube.com/" target="_blank"
 							title="youtube"><i class="bi bi-youtube"></i></a></li>
 					</ul>
 				</div> 
