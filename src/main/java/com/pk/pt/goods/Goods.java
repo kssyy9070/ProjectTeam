@@ -10,6 +10,7 @@ public class Goods {
 	private int goods_stock;
 	private String goods_cate;
 	private String goods_detail;
+	private String goods_img;
 	private Date goods_regDate;
 	private Date goods_updateDate;
 	
@@ -18,7 +19,7 @@ public class Goods {
 	}
 
 	public Goods(String goods_id, String goods_name, int goods_price, int goods_stock, String goods_cate,
-			String goods_detail, Date goods_regDate, Date goods_updateDate) {
+			String goods_detail, String goods_img, Date goods_regDate, Date goods_updateDate) {
 		super();
 		this.goods_id = goods_id;
 		this.goods_name = goods_name;
@@ -26,6 +27,7 @@ public class Goods {
 		this.goods_stock = goods_stock;
 		this.goods_cate = goods_cate;
 		this.goods_detail = goods_detail;
+		this.goods_img = goods_img;
 		this.goods_regDate = goods_regDate;
 		this.goods_updateDate = goods_updateDate;
 	}
@@ -78,6 +80,14 @@ public class Goods {
 		this.goods_detail = goods_detail;
 	}
 
+	public String getGoods_img() {
+		return goods_img;
+	}
+
+	public void setGoods_img(String goods_img) {
+		this.goods_img = goods_img;
+	}
+
 	public Date getGoods_regDate() {
 		return goods_regDate;
 	}
@@ -93,7 +103,7 @@ public class Goods {
 	public void setGoods_updateDate(Date goods_updateDate) {
 		this.goods_updateDate = goods_updateDate;
 	}
-	
-	
 
+	
+	
 }

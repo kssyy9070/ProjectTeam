@@ -37,8 +37,8 @@
 					value="${sessionScope.loginMember.tm_id }(${sessionScope.loginMember.tm_name})님"
 					readonly="readonly"> 
 					<c:if test="${sessionScope.loginMember.tm_id == 'admin'}">
-									<a href="adminPage.go" class="btn btn-light me-md-2 btn-sm">
-									관리자 페이지</a>
+					<a href="adminPage.go" class="btn btn-light me-md-2 btn-sm">
+					관리자 페이지</a>
 					</c:if>
 					<a href="member.mypage.go"
 					class="btn btn-light me-md-2 btn-sm"> myPage</a>

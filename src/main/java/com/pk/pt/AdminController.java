@@ -23,25 +23,30 @@ public class AdminController {
 	
 	@RequestMapping(value="/adminPage.go", method=RequestMethod.GET)
 	public String goAdminMain(HttpServletRequest req) {
-		
-		req.setAttribute("cp", "admin/main.jsp");
-		return "index";		
+	
+		return "admin/main";		
 	}
+	
+	@RequestMapping(value="/admin.update.go", method=RequestMethod.POST)
+	public String updateGo(Goods g, HttpServletRequest req) {
+		
+		GDAO.goodsRead(g, req);
+		return "admin/update";		
+	}
+	
 	
 	@RequestMapping(value="/admin.members.go", method=RequestMethod.GET)
 	public String memberList(HttpServletRequest req) {
 		MDAO.getAllMember(req);
-		
-		req.setAttribute("cp", "admin/members.jsp");
-		return "index";		
+	
+		return "admin/members";		
 	}
 	
-	@RequestMapping(value="/admin.goods.go", method=RequestMethod.GET)
+	@RequestMapping(value="/admin.list.go", method=RequestMethod.GET)
 	public String getAllGoods(HttpServletRequest req) {
 		GDAO.getAllGoods(req);
 		
-		req.setAttribute("cp", "goods/list.jsp");
-		return "index";		
+		return "admin/list";		
 	}
 	
 	@RequestMapping(value="/goods.read", method=RequestMethod.GET)
@@ -49,7 +54,22 @@ public class AdminController {
 		
 		GDAO.goodsRead(g, req);
 		
-		req.setAttribute("cp", "goods/read.jsp");
-		return "index";	
+		return "admin/read";	
+	}
+	
+	@RequestMapping(value="/admin.reg", method=RequestMethod.GET)
+	public String regGoods(HttpServletRequest req) {
+		
+	
+		return "admin/reg";	
+	}
+	
+	
+	@RequestMapping(value="/admin.read", method=RequestMethod.POST)
+	public String regGoods(Goods g, HttpServletRequest req) {
+		GDAO.reg(g, req);
+		GDAO.goodsRead(g, req);
+	
+		return "admin/read";	
 	}
 }

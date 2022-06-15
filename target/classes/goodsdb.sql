@@ -5,6 +5,7 @@ create table test_goods(
 	goods_stock number(4) default 0,
 	goods_cate varchar2(30 char),
 	goods_detail varchar2(100 char),
+	goods_img varchar2(1000 char),
 	goods_regDate Date default sysdate,
 	goods_updateDate Date default sysdate
 ) 

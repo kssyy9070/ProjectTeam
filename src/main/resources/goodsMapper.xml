@@ -10,6 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 	#{goods_stock},
 	#{goods_cate},
 	#{goods_detail},
+	#{goods_img},
 	SYSDATE,
 	SYSDATE) 
 	
