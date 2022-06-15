@@ -80,4 +80,12 @@ public class AdminController {
 	
 		return "admin/read";	
 	}
+	
+	@RequestMapping(value="/admin.delete", method=RequestMethod.GET)
+	public String delete(HttpServletRequest req) {
+		
+		GDAO.delete(req);
+	
+		return "admin/main";	
+	}
 }

@@ -33,4 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 	goods_stock=#{goods_stock}, goods_cate=#{goods_cate}, goods_detail=#{goods_detail}, goods_img=#{goods_img}, goods_updateDate=SYSDATE where goods_id=#{goods_id}
 	</update>
 	
+	<delete id="goodsDelete" parameterType="com.pk.pt.goods.Goods">
+	delete from TJD_GOODS where goods_id=#{goods_id}
+	</delete>
 </mapper>

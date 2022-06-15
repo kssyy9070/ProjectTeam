@@ -82,7 +82,7 @@
 					</div>
 					<div class="btns">
 						<button class="btn btn-default" id="btn_goods_update">상품정보 수정</button>
-						<button class="btn btn-default" id="btn_goods_back">상품 정보 페이지로 돌아가기</button>
+						<a class="btn btn-default" id="btn_goods_delete">상품 삭제</a>
 					</div>
 				</form>
 			</div>
@@ -100,11 +100,15 @@ $("#btn_goods_back").click(function(){
 	
 });
 	
-$("#btn_goods_update").click(function() {
-
-	location.href = "admin.update.go"
-
+$("#btn_goods_delete").click(function() {
+		
+	var isOk = confirm("상품을 삭제하시겠습니까? (삭제하시면 상품 정보를 되돌릴 수 없습니다.)");
+	
+	if (isOk) {
+		location.href= "admin.delete"
+	}
 });
+
 </script> 	
 </body>
 </html>

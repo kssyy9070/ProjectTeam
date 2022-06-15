@@ -6,6 +6,7 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.plaf.SliderUI;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.pk.pt.member.MemberMapper;
 
 @Service
 public class GoodsDAO {
@@ -153,4 +155,20 @@ public class GoodsDAO {
 	         }
 	      }
 	   }
+	 
+	 public void delete(HttpServletRequest req) {
+		 try {
+			Goods g = (Goods)req.getSession().getAttribute("tgsInfo");
+			
+			if (ss.getMapper(GoodsMapper.class).goodsDelete(g) == 1) {
+				req.setAttribute("r", "삭제 성공");
+			} else {
+				req.setAttribute("r", "삭제 실패");
+			}
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("r", "삭제 실패");
+		}
+	 }
 }
