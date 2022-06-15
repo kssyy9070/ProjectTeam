@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<<<<<<< HEAD
-=======
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
->>>>>>> branch 'master' of https://github.com/kssyy9070/ProjectTeam
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +13,6 @@
 <link rel="stylesheet" href="resources/css/admin/main.css">
 </head>
 <body>
-<<<<<<< HEAD
 <%@include file="../includes/header.jsp" %>
 <div id="page-wrapper">
   <!-- 사이드바 -->
@@ -41,7 +37,6 @@
   </div>
   <!-- /본문 -->
 </div>
-=======
 	<main class="my-form" >
 		<div class="cotainer">
 			<div class="row justify-content-center">
@@ -68,6 +63,5 @@
 
 
 	</main>
->>>>>>> branch 'master' of https://github.com/kssyy9070/ProjectTeam
 </body>
 </html>

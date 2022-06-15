@@ -1,26 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<<<<<<< HEAD
-=======
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
->>>>>>> branch 'master' of https://github.com/kssyy9070/ProjectTeam
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<<<<<<< HEAD
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="resources/css/admin/main.css">
-=======
-
->>>>>>> branch 'master' of https://github.com/kssyy9070/ProjectTeam
 </head>
 <body>
-<<<<<<< HEAD
 <%@include file="../includes/header.jsp" %>
 	<div id="page-wrapper">
   <!-- 사이드바 -->
@@ -70,7 +62,6 @@
   
   <!-- /본문 -->
 </div>
-=======
 	<main class="my-form">
 	
 		<div class="cotainer">
@@ -119,9 +110,5 @@
 		</div>
 
 	</main>
-
-
->>>>>>> branch 'master' of https://github.com/kssyy9070/ProjectTeam
-
 </body>
 </html>
