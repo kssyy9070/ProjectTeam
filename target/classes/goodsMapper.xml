@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 <mapper namespace="com.pk.pt.goods.GoodsMapper">
 	<insert id="regGoods" parameterType="com.pk.pt.goods.Goods">
 	
-	insert into test_goods values(#{goods_id}, 
+	insert into TJD_GOODS values(#{goods_id}, 
 	#{goods_name}, 
 	#{goods_price}, 
 	#{goods_stock},
@@ -18,14 +18,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 	
 	<select id="getAllGoods" resultType="com.pk.pt.goods.Goods">
 	
-	select * from test_goods order by goods_regDate
+	select * from TJD_GOODS order by goods_regDate
 	
 	</select>
 	
 	<select id="goodsRead" parameterType="com.pk.pt.goods.Goods" resultType="com.pk.pt.goods.Goods">
 	
-	select * from test_goods where goods_id = #{goods_id}
+	select * from TJD_GOODS where goods_id = #{goods_id}
 	
 	</select>
+	
+	<update id="goodsUpdate" parameterType="com.pk.pt.goods.Goods">
+	update TJD_GOODS set goods_name=#{goods_name}, goods_price=#{goods_price}, 
+	goods_stock=#{goods_stock}, goods_cate=#{goods_cate}, goods_detail=#{goods_detail}, goods_img=#{goods_img}, goods_updateDate=SYSDATE where goods_id=#{goods_id}
+	</update>
 	
 </mapper>

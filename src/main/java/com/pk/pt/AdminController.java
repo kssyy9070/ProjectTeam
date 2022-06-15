@@ -34,6 +34,13 @@ public class AdminController {
 		return "admin/update";		
 	}
 	
+	@RequestMapping(value="/admin.update.success", method=RequestMethod.POST)
+	public String update(HttpServletRequest req) {
+		
+		GDAO.goodsUpdate(req);
+		
+		return "admin/update";		
+	}
 	
 	@RequestMapping(value="/admin.members.go", method=RequestMethod.GET)
 	public String memberList(HttpServletRequest req) {
@@ -41,6 +48,7 @@ public class AdminController {
 	
 		return "admin/members";		
 	}
+	
 	
 	@RequestMapping(value="/admin.list.go", method=RequestMethod.GET)
 	public String getAllGoods(HttpServletRequest req) {
