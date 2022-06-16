@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 	
 	<select id="getAllGoods" resultType="com.pk.pt.goods.Goods">
 	
-	select * from TJD_GOODS order by goods_regDate
+	select * from TJD_GOODS order by goods_regDate ASC
 	
 	</select>
 	
@@ -36,4 +36,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 	<delete id="goodsDelete" parameterType="com.pk.pt.goods.Goods">
 	delete from TJD_GOODS where goods_id=#{goods_id}
 	</delete>
+	
+	<select id="getGoodsCate" resultType="com.pk.pt.goods.Goods" parameterType="com.pk.pt.goods.Goods">
+	select * from TJD_GOODS where goods_cate = #{goods_cate}
+	</select>
 </mapper>

@@ -31,7 +31,6 @@
 			</ul>
 		</div>
 		<!-- /사이드바 -->
-
 		<!-- 본문 -->
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
@@ -39,6 +38,16 @@
 					등록</h1>
 				<div class="form-group regGoods">
 					<form action="admin.read" method="post" id="regForm" enctype="multipart/form-data">
+						<div class="ct_left_area" align="center">
+							<div class="form_section_title">
+								<label>상품 이미지</label>
+							</div>
+							<div class="image_wrap">
+								<input type="file" name="goods_img" accept="image/*" onchange="imageView(this);"> 
+							</div>
+							<div style="width:100px; height:100px;"><img id="goods_img" src=""></div>
+						</div>
+					<div class="ct_right_area">
 						<div>
 							<label>상품 ID</label> <input name="goods_id"
 								class="form-control goods_id" required>
@@ -62,7 +71,7 @@
 									<option value="acc">5. 액세서리</option>
 								</select>
 								<button class="btn btn-default btn_goods_cate">입력</button>
-								<input name="goods_cate" class="form-control" required>
+								<input name="goods_cate" class="form-control" readonly>
 							</div>
 						</div>
 						<div>
@@ -72,22 +81,13 @@
 						<div>
 							<label>상품정보</label> <input name="goods_detail"
 								class="form-control" required>
-						</div>
-							<div class="form_section">
-							<div class="form_section_title">
-								<label>상품 이미지</label>
-							</div>
-							<div class="form_section_content">
-								<input type="file" name="goods_img" accept="image/*" onchange="imageView(this);"> 
-							</div>
-							<div style="width:100px; height:100px;"><img id="goods_img" src=""></div>
-							
-						</div>
 						<div class="btns">
 							<button class="btn btn-default" id="btn_goods_reg">상품 등록</button>
 							<button class="btn btn-default" id="btn_goods_back">상품
 								정보 페이지로 돌아가기</button>
 						</div>
+					</div>
+				</div>
 					</form>
 				</div>
 			</div>
@@ -104,6 +104,14 @@
 			location.href = "admin.list.go"
 
 		});
+		
+		$(".btn_goods_cate").on('click', function(event) {
+			event.preventDefault();
+			var goods_cate = $("#goods_cate option:selected").val();
+			$("input[name='goods_cate']").val(goods_cate);
+            /* 상품구분을 선택하고 입력 버튼을 누르면 input란에 해당하는 값이 출력됨 */
+		});
+
 	</script>
 </body>
 </html>

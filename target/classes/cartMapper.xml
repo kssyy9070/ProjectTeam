@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pk.pt.CartMapper">
+	<insert id="addCart" parameterType="com.pk.pt.cart.Cart">
+	 insert into tjd_cart values (tbl_cart_seq.nextval, #{cart_qty}, #{goods_id}, SYSDATE)
+</insert>
+</mapper>

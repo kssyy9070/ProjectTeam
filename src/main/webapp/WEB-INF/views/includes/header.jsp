@@ -57,8 +57,10 @@
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/pt">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">카테고리</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">이름적으세요 </a></li>
+					<li value="all" class="nav-item"><a class="nav-link" href="shop.all.go">ALL</a></li>
+					<li value="outer" class="nav-item"><a class="nav-link" href="shop.outer.go">OUTER</a></li>
+					<li value="top" class="nav-item"><a class="nav-link" href="shop.top.go">TOP</a></li>
+					<li value="bottom" class="nav-item"><a class="nav-link" href="shop.bottom.go">BOTTOM</a></li>
 				</ul>
 			</div>
 			${r }

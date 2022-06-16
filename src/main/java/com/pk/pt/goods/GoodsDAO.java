@@ -4,9 +4,9 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.plaf.SliderUI;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.pk.pt.member.MemberMapper;
 
 @Service
 public class GoodsDAO {
@@ -171,4 +170,13 @@ public class GoodsDAO {
 			req.setAttribute("r", "삭제 실패");
 		}
 	 }
+	 
+	 public void getGoodsCate(HttpServletRequest req) {
+		 	try {
+				req.setAttribute("cateList", ss.getMapper(GoodsMapper.class).getGoodsCate());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	 }
+
 }
