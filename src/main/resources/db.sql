@@ -22,6 +22,7 @@ delete from TJD_MEMBER where tm_id = 'test123';
 
 create table tjd_review(
 	tr_no number(5) primary key,
+	tr_g_id varchar2(100 char) not null,
 	tr_writer varchar2(10 char) not null,
 	tr_img varchar2(200 char) not null, 
 	tr_txt varchar2(250 char) not null,
@@ -38,6 +39,8 @@ create table tjd_review(
 
 create sequence tjd_review_seq; 
 
-insert into tjd_review values (tjd_review_seq.nextval, 'test123','dd','ddd',to_date(sysdate,'YYYY-MM-DD'));
+delete from TJD_REVIEW;
+
+insert into tjd_review values (tjd_review_seq.nextval, 'test2','test2','ddd','asdfasdf',sysdate);
 
 select * from TJD_REVIEW;

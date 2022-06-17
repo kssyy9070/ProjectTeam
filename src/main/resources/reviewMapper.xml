@@ -10,7 +10,7 @@
 	</select>
 	<insert id="regReview" parameterType="com.pk.pt.review.Review">
 		insert into tjd_review values (tjd_review_seq.nextval,#{tr_g_id}
-		,#{tr_writer},#{tr_img},#{tr_txt},to_date(sysdate,'YYYY-MM-DD'))
+		,#{tr_writer},#{tr_img},#{tr_txt},to_date(sysdate))
 
 	</insert>
 </mapper>

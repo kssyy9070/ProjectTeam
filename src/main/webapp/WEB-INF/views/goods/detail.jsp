@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<input value="${goodsRead.goods_id }" name="goods_id" hidden="hidden">
+	<input value="${goodsRead.goods_id }" name="goods_id" hidden="hidden">
 	<div class="row">
 		<div class="col-lg-12 col-md-12"
 			style="width: 100%; margin-left: 1px; margin-right: 1px;">
@@ -48,55 +48,61 @@
 	</div>
 
 
-	------------리뷰 쓰기 
-	<form action="review.reg" method="post" enctype="multipart/form-data">
-		<table border="1">
-		<tr>
-		<td> <input value="${goodsRead.goods_id }" name="tr_g_id"> </td>
-		</tr>
-			<tr>
-				<td>작성자</td>
-				<td><input value="${sessionScope.loginMember.tm_name }" name="tr_writer" readonly="readonly">  </td>
-			</tr>
-			<tr>
-				<td><input name="tr_txt" placeholder="내용"></td>
-			</tr>
-			<tr>
-				<td><input type="file" name="tr_img"></td>
-			</tr>
-			<tr>
-				<td>
-				<button>등록</button>
-				</td>
-			</tr>
-		</table>
+	<c:if test="${sessionScope.loginMember != null}">
+		<form action="review.reg" method="post" enctype="multipart/form-data">
+			<table style="margin-top: 30px; width: 100%;">
+				<tr>
+					<td><input value="${goodsRead.goods_id }" name="goods_id"
+						readonly="readonly"></td>
+				</tr>
+				<tr>
+					<td><input value="${sessionScope.loginMember.tm_name }"
+						name="tr_writer" readonly="readonly" hidden="hidden"></td>
+				</tr>
+				<tr>
+					<td><input class="form-control" type="text" name="tr_txt"
+						placeholder="한 줄 리뷰 작성" style="width: 90%; float: left;"
+						autocomplete="off" maxlength="250">
+						<button class="btn btn-secondary" style="margin-left: 20px;">등록</button>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style=""><input type="file" name="tr_img"
+						style="float: left; margin-top: 10px;"></td>
+				</tr>
+
+			</table>
 		</form>
-	
-	
-	
-	
-	-------------- 리뷰 보기 
-	
-	<table border="1">
-		<tr>
-			<td colspan="3">review</td>
+	</c:if>
+
+
+
+	<div class="row">
+		<div class="col-lg-12 col-md-12"
+			style="width: 100%; margin-left: 1px; margin-right: 1px; margin-top: 20px; ">
+			<div class="card col-lg-12 col-md-12">review</div>
+			<div class="card col-lg-12 col-md-12">
+			<table style="margin-top: 3px; width: 100%;">
+
+		<tr style="text-decoration: underline;">
+			<td align="center" style="width: 70%;">내용</td>
+			<td align="center" style="width: 20%;">작성자</td>
+			<td align="center" style="width: 10%;">날짜</td>
 		</tr>
-		<tr>
-			<td>내용</td>
-			<td>작성자</td>
-			<td>날짜</td>
-		</tr>
-		
+
 		<c:forEach var="rvs" items="${rvs }">
-		<tr>
-				<td>${rvs.tr_txt }</td>
-				<td>${rvs.tr_writer }</td>
-				<td><fmt:formatDate value="${rvs.tr_date }" type="date"
-						pattern="MM-dd"/></td>
-				<td> <img src="resources/img/review/${rvs.tr_img }"> </td>
+			<tr>
+				<td align="center" id="txt">${rvs.tr_txt }</td>
+				<td align="center">${rvs.tr_writer }</td>
+				<td align="center"><fmt:formatDate value="${rvs.tr_date }" type="date"
+						pattern="MM-dd" /></td>
+				<%-- <td><img src="resources/img/review/${rvs.tr_img }"></td> --%>
 			</tr>
-	
+
 		</c:forEach>
 	</table>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
