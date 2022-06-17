@@ -13,11 +13,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.pk.pt.review.Review;
+import com.pk.pt.review.ReviewDAO;
+
 @Controller
 public class GoodsController {
 	
 	@Autowired
 	private GoodsDAO GDAO;
+	
+	@Autowired
+	private ReviewDAO RDAO;
 	
 	@RequestMapping(value="/shop.all.go", method=RequestMethod.GET)
 	public String goAll(HttpServletRequest req) {
@@ -60,7 +66,8 @@ public class GoodsController {
 	}
 	
 	@RequestMapping(value="/goods.detail", method=RequestMethod.GET)
-	public String asdf(Goods g,HttpServletRequest req) {
+	public String asdf(Review r ,Goods g,HttpServletRequest req) {
+		RDAO.getReview(r, req);
 		GDAO.goodsRead(g, req);
 		req.setAttribute("cp", "goods/detail.jsp");
 		return "index";
