@@ -19,6 +19,14 @@ public class GoodsController {
 	@Autowired
 	private GoodsDAO GDAO;
 	
+	@RequestMapping(value="/shop.all.go", method=RequestMethod.GET)
+	public String goAll(HttpServletRequest req) {
+	
+		GDAO.getAllGoods(req);	
+	
+		return "goods/all";		
+	}
+	
 	@RequestMapping(value="/shop.top.go", method=RequestMethod.GET)
 	public String goAdminMain(HttpServletRequest req) {
 	
@@ -27,13 +35,6 @@ public class GoodsController {
 		return "goods/top";		
 	}
 	
-	@RequestMapping(value="/shop.all.go", method=RequestMethod.GET)
-	public String goAll(HttpServletRequest req) {
-	
-		GDAO.getAllGoods(req);	
-	
-		return "goods/all";		
-	}
 	
 	@RequestMapping(value="/shop.bottom.go", method=RequestMethod.GET)
 	public String goButtom(HttpServletRequest req) {
@@ -58,12 +59,11 @@ public class GoodsController {
 		return "goods/top";		
 	}
 	
-	@RequestMapping(value="/goods.view", method=RequestMethod.GET)
-	public String goGoodsView(Goods g, HttpServletRequest req) {
-	
+	@RequestMapping(value="/goods.detail", method=RequestMethod.GET)
+	public String asdf(Goods g,HttpServletRequest req) {
 		GDAO.goodsRead(g, req);
-		
-		return "goods/goodsView";		
+		req.setAttribute("cp", "goods/detail.jsp");
+		return "index";
 	}
 	
 
