@@ -11,6 +11,21 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet" />
 </head>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$("#report tr:odd").addClass("odd");
+		$("#report tr:not(.odd)").hide();
+		$("#report tr:first-child").show();
+
+		$("#report tr.odd").click(function() {
+			$(this).next("tr").toggle();
+			$(this).find(".arrow").toggleClass("up");
+
+		});
+
+	});
+</script>
 <body>
 
 	<input value="${goodsRead.goods_id }" name="goods_id" hidden="hidden">
@@ -50,13 +65,13 @@
 
 	<c:if test="${sessionScope.loginMember != null}">
 		<form action="review.reg" method="post" enctype="multipart/form-data">
-			<table style="margin-top: 30px; width: 100%;">
+			<table style="margin-top: 30px; width: 100%;" id="re">
 				<tr>
-					<td><input value="${goodsRead.goods_id }" name="goods_id"
+					<td><input value="${goodsRead.goods_id }" name="tr_g_id"
 						readonly="readonly"></td>
 				</tr>
 				<tr>
-					<td><input value="${sessionScope.loginMember.tm_name }"
+					<td><input value="${sessionScope.loginMember.tm_id }"
 						name="tr_writer" readonly="readonly" hidden="hidden"></td>
 				</tr>
 				<tr>
@@ -79,28 +94,37 @@
 
 	<div class="row">
 		<div class="col-lg-12 col-md-12"
-			style="width: 100%; margin-left: 1px; margin-right: 1px; margin-top: 20px; ">
+			style="width: 100%; margin-left: 1px; margin-right: 1px; margin-top: 20px;">
 			<div class="card col-lg-12 col-md-12">review</div>
 			<div class="card col-lg-12 col-md-12">
-			<table style="margin-top: 3px; width: 100%;">
+				<table style="margin-top: 3px; width: 100%;" id="report">
 
-		<tr style="text-decoration: underline;">
-			<td align="center" style="width: 70%;">내용</td>
-			<td align="center" style="width: 20%;">작성자</td>
-			<td align="center" style="width: 10%;">날짜</td>
-		</tr>
+					<tr style="text-decoration: underline;">
+						<td align="center" style="width: 70%;">내용</td>
+						<td align="center" style="width: 20%;">작성자</td>
+						<td align="center" style="width: 10%;">날짜</td>
+					</tr>
 
-		<c:forEach var="rvs" items="${rvs }">
-			<tr>
-				<td align="center" id="txt">${rvs.tr_txt }</td>
-				<td align="center">${rvs.tr_writer }</td>
-				<td align="center"><fmt:formatDate value="${rvs.tr_date }" type="date"
-						pattern="MM-dd" /></td>
-				<%-- <td><img src="resources/img/review/${rvs.tr_img }"></td> --%>
-			</tr>
+					<c:forEach var="rvs" items="${rvs }">
+						<tr>
+							<td align="center" id="txt" class="arrow">${rvs.tr_txt }</td>
+							<td align="center">${rvs.tr_writer }</td>
+							<td align="center"><fmt:formatDate value="${rvs.tr_date }"
+									type="date" pattern="MM-dd" /></td>
+							
+						</tr>
+						<tr>
+						<td colspan="2" align="center"><img src="resources/img/review/${rvs.tr_img }"></td>
+						<td>
+						<c:if test="${sessionScope.loginMember.tm_id == rvs.tr_writer}">
+						<a style="text-align: right;">삭제</a>
+						</c:if>
+						
+						</td>
+						</tr>
 
-		</c:forEach>
-	</table>
+					</c:forEach>
+				</table>
 			</div>
 		</div>
 	</div>

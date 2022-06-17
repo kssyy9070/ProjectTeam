@@ -37,7 +37,7 @@ public class ReviewDAO {
 
 			MultipartRequest mr = new MultipartRequest(req, path, 30 * 1024 * 1024, "UTF-8",
 					new DefaultFileRenamePolicy());
-			String tr_g_id = mr.getParameter("goods_id");
+			String tr_g_id = mr.getParameter("tr_g_id");
 			String tr_writer = mr.getParameter("tr_writer");
 			String tr_img = mr.getFilesystemName("tr_img");
 			String tr_txt = mr.getParameter("tr_txt");
