@@ -7,11 +7,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.pk.pt.goods.GoodsDAO;
+
 @Controller
 public class MemberController {
 
 	@Autowired
 	private MemberDAO MDAO;
+	
+	@Autowired
+	private GoodsDAO GDAO;
 	
 	@RequestMapping(value = "/member.join.go",method = RequestMethod.GET)
 	public String goJoinMember(HttpServletRequest req) {
@@ -22,6 +27,7 @@ public class MemberController {
 	@RequestMapping(value = "/member.join",method = RequestMethod.POST)
 	public String joinMember(Member m,HttpServletRequest req) {
 		MDAO.join(m, req);
+		GDAO.getAllGoods(req);
 		req.setAttribute("cp", "home.jsp");
 		return "index";
 	}
@@ -35,6 +41,7 @@ public class MemberController {
 	@RequestMapping(value = "/member.login",method = RequestMethod.POST)
 	public String loginMember(Member m, HttpServletRequest req) {
 		MDAO.login(m, req);
+		GDAO.getAllGoods(req);
 		req.setAttribute("cp", "home.jsp");
 		return "index";
 	}
@@ -42,6 +49,7 @@ public class MemberController {
 	@RequestMapping(value = "/member.logout", method = RequestMethod.GET)
 	public String doLogout(HttpServletRequest req) {
 		MDAO.logout(req);
+		GDAO.getAllGoods(req);
 		req.setAttribute("cp", "home.jsp");
 
 		return "index";
@@ -63,6 +71,7 @@ public class MemberController {
 	@RequestMapping(value = "/member.leave",method = RequestMethod.GET)
 	public String leave(Member m,HttpServletRequest req) {
 		MDAO.leave(m, req);
+		GDAO.getAllGoods(req);
 		req.setAttribute("cp", "home.jsp");
 		return "index";
 	}
