@@ -117,7 +117,7 @@
 						<td colspan="2" align="center"><img src="resources/img/review/${rvs.tr_img }"></td>
 						<td>
 						<c:if test="${sessionScope.loginMember.tm_id == rvs.tr_writer}">
-						<a style="text-align: right;">삭제</a>
+						<a style="text-align: right;" href="review.del">삭제</a>
 						</c:if>
 						
 						</td>
