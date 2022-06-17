@@ -19,20 +19,18 @@
 	<%@include file="../includes/header.jsp"%>
 	<p>
 	<div class="content">
-	
-			<h1 class="page-header">&nbsp;&nbsp;BOTTOM</h1>
-			<div class="form-inline">
+			<div class="form-inline" style="position: fixed; right: 20px; top: 90px; z-index: 2;">
 			<select class="form-control" id="goods_cate" onchange="location.href=this.value">
 					<option value="/pt/shop.outer.go">1. 외투</option>
 					<option value="/pt/shop.top.go">2. 상의</option>
-					<option value="/pt/shop.bottom.go">3. 하의</option>
+					<option value="/pt/shop.bottom.go" selected="selected">3. 하의</option>
 			</select>
 			</div>
 			<div class="row goods" align="center">
 					<c:forEach var="g" items="${goods}">
 					<c:if test="${g.goods_cate == 'bottom'}">
 					<div class="scale col-lg-3 col-md-4 float-start" align="center">
-						<a href="goods.view?goods_id=${g.goods_id }" class="thumbnail"> <img src="resources/img/${g.goods_img }"
+						<a href="goods.detail?goods_id=${g.goods_id }" class="thumbnail"> <img src="resources/img/${g.goods_img }"
 							class="img-thumbnail" alt="Thumbnail image"
 							style="width: 250px; height: 200px; margin: 20px;"></a>
 						<h3>${g.goods_name}</h3>
