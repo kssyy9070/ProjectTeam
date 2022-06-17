@@ -15,6 +15,22 @@ INSERT INTO TJD_GOODS (goods_id, goods_name, goods_price) VALUES ('test_goods_id
 
 insert into TJD_GOODS values('test_product_id', 'test_product_name', 50000, 0, '상의', '파란색', sysdate, sysdate)
 
-select * from TJD_GOODS
+select * from TJD_goods_category
 
-drop table test_goods
+drop table TJD_goods_category
+
+create table TJD_goods_cart(
+	cart_id number(10) primary key,
+	cart_qty number(4),
+	tm_id varchar2(10 char),
+	goods_id varchar2(100 char),
+	reqDate Date default sysdate,
+	constraint cart_fk_tm_id 
+		foreign key(tm_id)
+		references TJD_MEMBER(tm_id)
+		on delete cascade,
+	constraint cart_fk_goods_id
+		foreign key(goods_id)
+		references TJD_goods(goods_id)
+		on delete cascade
+)

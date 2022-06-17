@@ -78,7 +78,7 @@
 								</select>
 								<button class="btn btn-default btn_goods_cate">입력</button>
 								<input name="goods_cate" value="${goodsRead.goods_cate}"
-									class="form-control" readonly>
+									class="form-control" required>
 							</div>
 						</div>
 						<div>
@@ -125,6 +125,13 @@
 
 			location.href = "admin.update.success"
 
+		});
+		
+		$(".btn_goods_cate").on('click', function(event) {
+			event.preventDefault();
+			var goods_cate = $("#goods_cate option:selected").val();
+			$("input[name='goods_cate']").val(goods_cate);
+            /* 상품구분을 선택하고 입력 버튼을 누르면 input란에 해당하는 값이 출력됨 */
 		});
 	</script>
 </body>

@@ -27,3 +27,4 @@ function imageView(input) {
 	    reader.readAsDataURL(input.files[0]);
 	  } 
 	}
+

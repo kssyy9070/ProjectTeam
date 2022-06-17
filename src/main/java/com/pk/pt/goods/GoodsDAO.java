@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -153,4 +154,29 @@ public class GoodsDAO {
 	         }
 	      }
 	   }
+	 
+	 public void delete(HttpServletRequest req) {
+		 try {
+			Goods g = (Goods)req.getSession().getAttribute("tgsInfo");
+			
+			if (ss.getMapper(GoodsMapper.class).goodsDelete(g) == 1) {
+				req.setAttribute("r", "삭제 성공");
+			} else {
+				req.setAttribute("r", "삭제 실패");
+			}
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("r", "삭제 실패");
+		}
+	 }
+	 
+	 public void getGoodsCate(HttpServletRequest req) {
+		 	try {
+				req.setAttribute("cateList", ss.getMapper(GoodsMapper.class).getGoodsCate());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	 }
+
 }

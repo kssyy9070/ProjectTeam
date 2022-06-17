@@ -49,3 +49,45 @@
     font-size: 1.3em;
     line-height: 3em;
   }
+  
+  .header{
+	margin-bottom: 50px;
+}
+.content_area{
+	width: 100%;
+    min-height: 1000px;
+}
+	.content_top{
+	    width: 100%;
+	    height: 400px;
+  	}
+.ct_left_area{
+		float: left;
+	    width: 50%;
+	    height: 100%;
+  	}
+  		.image_wrap{
+		    height: 80%;
+		    width: 80%;
+		    margin: auto;
+		    top: 10%;
+		    position: relative;  		
+  		}
+  		.image_wrap img{
+	  		max-width: 100%;
+		    height: auto;
+		    display: block;  		
+  		}
+  		.line{
+		    width: 100%;
+		    border-top:1px solid #c6c6cf;  		
+  		}
+ .ct_right_area{
+	    float: left;
+	    width: 600px;
+	    height: 100%;
+	    margin-right: 100px;
+  	} 
+ .footer{
+ 	margin-top: 50px;
+ }	
