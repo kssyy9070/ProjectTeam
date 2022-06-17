@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,7 +45,7 @@
 			<div class="row goods" align="center">
 					<c:forEach var="g" items="${goods}">
 					<div class="scale col-lg-3 col-md-4 float-start" align="center">
-						<a href="goods.view?goods_id=${g.goods_id }" class="thumbnail"> <img src="resources/img/${g.goods_img }"
+						<a href="goods.detail?goods_id=${g.goods_id }" class="thumbnail"> <img src="resources/img/${g.goods_img }"
 							class="img-thumbnail" alt="Thumbnail image"
 							style="width: 250px; height: 200px; margin: 20px;"></a>
 						<h3>${g.goods_name}</h3>

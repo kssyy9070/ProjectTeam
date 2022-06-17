@@ -13,7 +13,7 @@
 </head>
 <body>
 
-
+<input value="${goodsRead.goods_id }" name="goods_id" hidden="hidden">
 	<div class="row">
 		<div class="col-lg-12 col-md-12"
 			style="width: 100%; margin-left: 1px; margin-right: 1px;">
@@ -48,25 +48,55 @@
 	</div>
 
 
-	<br>
-
+	------------리뷰 쓰기 
+	<form action="review.reg" method="post" enctype="multipart/form-data">
+		<table border="1">
+		<tr>
+		<td> <input value="${goodsRead.goods_id }" name="tr_g_id"> </td>
+		</tr>
+			<tr>
+				<td>작성자</td>
+				<td><input value="${sessionScope.loginMember.tm_name }" name="tr_writer" readonly="readonly">  </td>
+			</tr>
+			<tr>
+				<td><input name="tr_txt" placeholder="내용"></td>
+			</tr>
+			<tr>
+				<td><input type="file" name="tr_img"></td>
+			</tr>
+			<tr>
+				<td>
+				<button>등록</button>
+				</td>
+			</tr>
+		</table>
+		</form>
+	
+	
+	
+	
+	-------------- 리뷰 보기 
+	
 	<table border="1">
 		<tr>
 			<td colspan="3">review</td>
 		</tr>
 		<tr>
-			<td>제목</td>
+			<td>내용</td>
 			<td>작성자</td>
 			<td>날짜</td>
 		</tr>
+		
+		<c:forEach var="rvs" items="${rvs }">
 		<tr>
-			<td>
-			</td>
-			<td>
-			</td>
-			<td>
-			</td>
-		</tr>
+				<td>${rvs.tr_txt }</td>
+				<td>${rvs.tr_writer }</td>
+				<td><fmt:formatDate value="${rvs.tr_date }" type="date"
+						pattern="MM-dd"/></td>
+				<td> <img src="resources/img/review/${rvs.tr_img }"> </td>
+			</tr>
+	
+		</c:forEach>
 	</table>
 </body>
 </html>
