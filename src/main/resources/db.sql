@@ -35,7 +35,7 @@ create table tjd_review(
 
 create sequence tjd_review_seq; 
 
-delete from TJD_REVIEW;
+delete from TJD_REVIEW where tr_no='51';
 
 insert into tjd_review values (tjd_review_seq.nextval, 'test2','test2','ddd','asdfasdf',sysdate);
 

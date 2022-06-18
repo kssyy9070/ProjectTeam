@@ -109,16 +109,16 @@
 					<c:forEach var="rvs" items="${rvs }">
 						<tr>
 							<td> <input value="${rvs.tr_no }" name="tr_no" hidden="hidden"> </td>
-							<td align="center" id="txt" class="arrow">${rvs.tr_txt }</td>
-							<td align="center">${rvs.tr_writer }</td>
-							<td align="center"><fmt:formatDate value="${rvs.tr_date }"
+							<td align="center" id="txt" class="arrow"  style="width: 70%;">${rvs.tr_txt }</td>
+							<td align="center"  style="width: 20%;">${rvs.tr_writer }</td>
+							<td align="center"  style="width: 10%;"><fmt:formatDate value="${rvs.tr_date }"
 									type="date" pattern="MM-dd" /></td>
 
 						</tr>
 						<tr>
-							<td colspan="2" align="center"><img
+							<td colspan="3" align="center"  style="width: 90%;"><img width="400px;"
 								src="resources/img/${rvs.tr_img }"></td>
-							<td>
+							<td  style="width: 10%;">
 							 <c:if test="${sessionScope.loginMember.tm_id == rvs.tr_writer}">
 						<a style="text-align: right;" onclick="return delReviewCheck();">삭제</a>
 						</c:if>
