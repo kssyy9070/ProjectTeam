@@ -33,7 +33,7 @@ public class ReviewDAO {
 	public void regReview(Review r, HttpServletRequest req) {
 		try {
 
-			String path = req.getSession().getServletContext().getRealPath("resources/img/review");
+			String path = req.getSession().getServletContext().getRealPath("resources/img");
 
 			MultipartRequest mr = new MultipartRequest(req, path, 300 * 1024 * 1024, "UTF-8",
 					new DefaultFileRenamePolicy());

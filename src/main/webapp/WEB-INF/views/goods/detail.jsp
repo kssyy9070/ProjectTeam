@@ -33,7 +33,7 @@
 			style="width: 100%; margin-left: 1px; margin-right: 1px;">
 			<div class="card col-lg-6 col-md-6"
 				style="width: 30rem; float: left;">
-				<img src="resources/img/goods/${goodsRead.goods_id }.png"
+				<img src="resources/img/${goodsRead.goods_img }"
 					class="card-img-top">
 			</div>
 
@@ -67,7 +67,7 @@
 			<table style="margin-top: 30px; width: 100%;" id="re">
 				<tr>
 					<td><input value="${goodsRead.goods_id }" name="tr_g_id"
-						readonly="readonly"></td>
+						readonly="readonly" hidden="hidden"></td>
 				</tr>
 				<tr>
 					<td><input value="${sessionScope.loginMember.tm_id }"
@@ -105,7 +105,7 @@
 
 					<c:forEach var="rvs" items="${rvs }">
 						<tr>
-							<td> <input value="${rvs.tr_no }" name="tr_no"> </td>
+							<td> <input value="${rvs.tr_no }" name="tr_no" hidden="hidden"> </td>
 							<td align="center" id="txt" class="arrow">${rvs.tr_txt }</td>
 							<td align="center">${rvs.tr_writer }</td>
 							<td align="center"><fmt:formatDate value="${rvs.tr_date }"
@@ -114,7 +114,7 @@
 						</tr>
 						<tr>
 							<td colspan="2" align="center"><img
-								src="resources/img/review/${rvs.tr_img }"></td>
+								src="resources/img/${rvs.tr_img }"></td>
 							<td>
 							 <c:if test="${sessionScope.loginMember.tm_id == rvs.tr_writer}">
 						<a style="text-align: right;" onclick="return delReviewCheck();">삭제</a>
