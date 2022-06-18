@@ -13,4 +13,7 @@
 		,#{tr_writer},#{tr_img},#{tr_txt},to_date(sysdate))
 
 	</insert>
-</mapper>
+	<delete id="delReview" parameterType="com.pk.pt.review.Review">
+	delete from tjd_review where tr_no=#{tr_no}
+	</delete>
+</mapper> 

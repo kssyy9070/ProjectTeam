@@ -97,6 +97,7 @@
 				<table style="margin-top: 3px; width: 100%;" id="report">
 
 					<tr style="text-decoration: underline;">
+						<td style="width: 1px;"></td>
 						<td align="center" style="width: 70%;">내용</td>
 						<td align="center" style="width: 20%;">작성자</td>
 						<td align="center" style="width: 10%;">날짜</td>
@@ -104,7 +105,7 @@
 
 					<c:forEach var="rvs" items="${rvs }">
 						<tr>
-
+							<td> <input value="${rvs.tr_no }" name="tr_no"> </td>
 							<td align="center" id="txt" class="arrow">${rvs.tr_txt }</td>
 							<td align="center">${rvs.tr_writer }</td>
 							<td align="center"><fmt:formatDate value="${rvs.tr_date }"
@@ -115,9 +116,9 @@
 							<td colspan="2" align="center"><img
 								src="resources/img/review/${rvs.tr_img }"></td>
 							<td>
-								<%-- <c:if test="${sessionScope.loginMember.tm_id == rvs.tr_writer}">
-						<a style="text-align: right;" href="review.del">삭제</a>
-						</c:if> --%>
+							 <c:if test="${sessionScope.loginMember.tm_id == rvs.tr_writer}">
+						<a style="text-align: right;" onclick="return delReviewCheck();">삭제</a>
+						</c:if>
 
 							</td>
 						</tr>

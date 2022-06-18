@@ -27,5 +27,14 @@ public class ReviewController {
 		req.setAttribute("cp", "goods/detail.jsp");
 		return "index";
 	}
+	
+	@RequestMapping(value = "/review.del",method = RequestMethod.GET)
+	public String delReview(Goods g, Review r, HttpServletRequest req) {
+		RDAO.delReview(r, req);
+//		GDAO.goodsRead(g, req);
+//		RDAO.getReview(r, req);
+		req.setAttribute("cp", "goods/detail.jsp");
+		return "index";
+	}
 
 }
