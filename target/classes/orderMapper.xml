@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pk.pt.order.OrderMapper">
+	<insert id="orderInfo">
+		insert into TJD_order(order_id, tm_id, tm_name,
+		tm_addr1, tm_addr2,
+		tm_addr3, tm_phone, totalAmount)
+		values(#{order_id}, #{tm_id}, #{tm_name}, #{tm_addr1}, #{tm_addr2},
+		#{tm_addr3},
+		#{tm_phone}, #{totalAmount})
+	</insert>
+
+	<insert id="orderDetails">
+		insert into TJD_order_detail(o_d_num, order_id, order_qyt, goods_id, selected_Opt, deliver_msg, deliver_situ, billingDate, cal_info)
+		select tbl_order_details_seq.nextval, #{orderId}, gdsNum, cartStock
+		from tbl_cart
+	</insert>
+</mapper>

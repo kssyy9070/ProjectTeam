@@ -171,12 +171,5 @@ public class GoodsDAO {
 		}
 	 }
 	 
-	 public void getGoodsCate(HttpServletRequest req) {
-		 	try {
-				req.setAttribute("cateList", ss.getMapper(GoodsMapper.class).getGoodsCate());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-	 }
 
 }

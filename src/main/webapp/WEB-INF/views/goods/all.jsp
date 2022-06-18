@@ -12,8 +12,6 @@
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/js/jQuery.js"></script>
-<style type="text/css">
-</style>
 </head>
 <body>
 	<%@include file="../includes/header.jsp"%>
@@ -38,8 +36,8 @@
 						<h3>${g.goods_price}<span>원</span>
 						</h3>
 						<p>
-							<a href="#" class="btn btn-primary" role="button">구입하기</a> <a
-								href="#" class="btn btn-default" role="button">장바구니</a>
+							<a href="#" class="btn btn-primary" role="button">구입하기</a> 
+							<a href="#" class="btn btn-default" role="button">장바구니</a>
 						</p>
 					</div>
 					</c:forEach>

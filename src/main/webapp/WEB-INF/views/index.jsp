@@ -40,6 +40,8 @@
 					<a href="adminPage.go" class="btn btn-light me-md-2 btn-sm">
 					관리자 페이지</a>
 					</c:if>
+					<a href="cart.list"
+					class="btn btn-light me-md-2 btn-sm">장바구니</a>
 					<a href="member.mypage.go"
 					class="btn btn-light me-md-2 btn-sm"> myPage</a>
 				<button id="logoutBtn" class="btn btn-light me-md-2 btn-sm">logout</button>
