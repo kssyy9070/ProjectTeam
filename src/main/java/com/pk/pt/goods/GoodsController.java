@@ -13,11 +13,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.pk.pt.review.Review;
+import com.pk.pt.review.ReviewDAO;
+
 @Controller
 public class GoodsController {
 	
 	@Autowired
 	private GoodsDAO GDAO;
+	
+	@Autowired
+	private ReviewDAO RDAO;
+	
+	@RequestMapping(value="/shop.all.go", method=RequestMethod.GET)
+	public String goAll(HttpServletRequest req) {
+	
+		GDAO.getAllGoods(req);	
+	
+		return "goods/all";		
+	}
 	
 	@RequestMapping(value="/shop.top.go", method=RequestMethod.GET)
 	public String goAdminMain(HttpServletRequest req) {
@@ -27,13 +41,6 @@ public class GoodsController {
 		return "goods/top";		
 	}
 	
-	@RequestMapping(value="/shop.all.go", method=RequestMethod.GET)
-	public String goAll(HttpServletRequest req) {
-	
-		GDAO.getAllGoods(req);	
-	
-		return "goods/all";		
-	}
 	
 	@RequestMapping(value="/shop.bottom.go", method=RequestMethod.GET)
 	public String goButtom(HttpServletRequest req) {
@@ -58,12 +65,12 @@ public class GoodsController {
 		return "goods/top";		
 	}
 	
-	@RequestMapping(value="/goods.view", method=RequestMethod.GET)
-	public String goGoodsView(Goods g, HttpServletRequest req) {
-	
+	@RequestMapping(value="/goods.detail", method=RequestMethod.GET)
+	public String goGoodsDetail(Review r ,Goods g,HttpServletRequest req) {
 		GDAO.goodsRead(g, req);
-		
-		return "goods/goodsView";		
+		RDAO.getReview(r, req);
+		req.setAttribute("cp", "goods/detail.jsp");
+		return "index";
 	}
 	
 

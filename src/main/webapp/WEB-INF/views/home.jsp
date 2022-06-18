@@ -1,11 +1,13 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
 <html>
 <head>
-<title>Home</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
-
 
 	<div id="carouselExampleFade" class="carousel slide carousel-fade"
 		data-bs-ride="carousel">
@@ -38,59 +40,25 @@
 	<br>
 	<br>
 
-
-
-
-	<div class="row">
-		<div class="col-lg-3 col-md-6">
-			<div class="card" style="width: 18rem;">
-				<img
-					src="https://kream-phinf.pstatic.net/MjAyMDEwMjJfMjIw/MDAxNjAzMzM0MDEzMzUw.4UY_zv0_2_x0AOqPJmFZhc0n7VAA-Rv4XHjMadCl-bkg.SVprKwNU7HTFULxojNW3gs3tr53Yq-qRwQ9RSovduJYg.PNG/p_25922_2_3c6199b397a1430897c21af730b49290.png?type=l_webp"
-					class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">Jordan</h5>
-					<p class="card-text">Jordan 1 Retro High OG Black Mocha</p>
-					<a href="#" class="btn btn-primary">600,000won</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-3 col-md-6">
-			<div class="card" style="width: 18rem;">
-				<img
-					src="https://kream-phinf.pstatic.net/MjAyMDEwMjJfMjIw/MDAxNjAzMzM0MDEzMzUw.4UY_zv0_2_x0AOqPJmFZhc0n7VAA-Rv4XHjMadCl-bkg.SVprKwNU7HTFULxojNW3gs3tr53Yq-qRwQ9RSovduJYg.PNG/p_25922_2_3c6199b397a1430897c21af730b49290.png?type=l_webp"
-					class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">Jordan</h5>
-					<p class="card-text">Jordan 1 Retro High OG Black Mocha</p>
-					<a href="#" class="btn btn-primary">600,000won</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-3 col-md-6">
-			<div class="card" style="width: 18rem;">
-				<img
-					src="https://kream-phinf.pstatic.net/MjAyMDEwMjJfMjIw/MDAxNjAzMzM0MDEzMzUw.4UY_zv0_2_x0AOqPJmFZhc0n7VAA-Rv4XHjMadCl-bkg.SVprKwNU7HTFULxojNW3gs3tr53Yq-qRwQ9RSovduJYg.PNG/p_25922_2_3c6199b397a1430897c21af730b49290.png?type=l_webp"
-					class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">Jordan</h5>
-					<p class="card-text">Jordan 1 Retro High OG Black Mocha</p>
-					<a href="#" class="btn btn-primary">600,000won</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-3 col-md-6">
-			<div class="card" style="width: 18rem;">
-				<img
-					src="https://kream-phinf.pstatic.net/MjAyMDEwMjJfMjIw/MDAxNjAzMzM0MDEzMzUw.4UY_zv0_2_x0AOqPJmFZhc0n7VAA-Rv4XHjMadCl-bkg.SVprKwNU7HTFULxojNW3gs3tr53Yq-qRwQ9RSovduJYg.PNG/p_25922_2_3c6199b397a1430897c21af730b49290.png?type=l_webp"
-					class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">Jordan</h5>
-					<p class="card-text">Jordan 1 Retro High OG Black Mocha</p>
-					<a href="#" class="btn btn-primary">600,000won</a>
-				</div>
+	<p>
+	<div class="content">
+			<div class="row goods" align="center">
+					<c:forEach var="g" items="${goods}">
+					<div class="scale col-lg-3 col-md-4 float-start" align="center">
+						<a href="goods.detail?goods_id=${g.goods_id }" class="thumbnail"> <img src="resources/img/${g.goods_img }"
+							class="img-thumbnail" alt="Thumbnail image"
+							style="width: 250px; height: 200px; margin: 20px;"></a>
+						<h3>${g.goods_name}</h3>
+						<h3>${g.goods_price}<span>원</span>
+						</h3>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">구입하기</a> <a
+								href="#" class="btn btn-default" role="button">장바구니</a>
+						</p>
+					</div>
+					</c:forEach>
 			</div>
 		</div>
 
-	</div>
 </body>
 </html>

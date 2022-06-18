@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pk.pt.review.ReviewMapper">
+	<select id="getReview" parameterType="com.pk.pt.review.Review"
+		resultType="com.pk.pt.review.Review">
+		select * from tjd_review, tjd_goods
+		where goods_id = tr_g_id and goods_id=#{goods_id}
+		order by tr_date desc
+
+	</select>
+	<insert id="regReview" parameterType="com.pk.pt.review.Review">
+		insert into tjd_review values (tjd_review_seq.nextval,#{tr_g_id}
+		,#{tr_writer},#{tr_img},#{tr_txt},to_date(sysdate))
+
+	</insert>
+	<delete id="delReview" parameterType="com.pk.pt.review.Review">
+	delete from tjd_review where tr_no=#{tr_no}
+	</delete>
+</mapper> 

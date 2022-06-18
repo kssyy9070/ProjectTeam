@@ -37,7 +37,7 @@ function joinCheck(){
 	
 	if(isEmpty(pwInput) || lessThan(pwInput,4) || notContains(pwInput,"1234567890")
 	||notContains(pwInput,"!@#$%^&*()_-+=?")){
-		alert("PW를 입력해주세요. 사용가능한 특수문자는 '!@#$%^&*()_-+=?' 입니다.")
+		alert("PW를 입력해주세요.")
 		pwInput.value = "";
 		pwChkInput.value = "";
 		pwInput.focus();
