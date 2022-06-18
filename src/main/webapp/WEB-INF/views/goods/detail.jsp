@@ -27,7 +27,7 @@
 	});
 </script>
 <body>
-	<input value="${goodsRead.goods_id }" name="goods_id" hidden="hidden">
+	<input value="${goodsRead.goods_id }" id="goods_id" hidden="hidden">
 	<div class="row">
 		<div class="col-lg-12 col-md-12"
 			style="width: 100%; margin-left: 1px; margin-right: 1px;">
@@ -49,9 +49,12 @@
 					style="text-align: left; padding-left: 20px; padding-top: 20px; color: #525450; font-size: 12pt; text-decoration: underline;">price</p>
 				<p class="card-text"
 					style="text-align: left; padding-left: 20px; color: #525450; font-size: 15pt">${goodsRead.goods_price }won</p>
+				<button type="button" class="minus" id="minus">-</button>
+				<input type="number" class="numBox" min="1" max="${goodsRead.goods_stock}"
+					value="1" readonly="readonly" />
+				<button type="button" class="plus" id="plus">+</button>
 
-				<p class="btn btn-secondaryt" style="width: 100%; margin-top: 10px;">ADD
-					TO CART</p>
+				<button class="btn btn-default btn-cart">ADD TO CART</button>
 				<p class="btn btn-dark" style="width: 100%;">BUY NOW</p>
 
 			</div>
@@ -128,5 +131,58 @@
 			</div>
 		</div>
 	</div>
+	
+<script type="text/javascript">
+$(".plus").click(function(){
+	   var num = $(".numBox").val();
+	   var plusNum = Number(num) + 1;
+	   
+	   if(plusNum >= ${goodsRead.goods_stock}) {
+	    $(".numBox").val(num);
+	   } else {
+	    $(".numBox").val(plusNum);          
+	   }
+	 });
+	  
+$(".minus").click(function(){
+	   var num = $(".numBox").val();
+	   var minusNum = Number(num) - 1;
+	   
+	   if(minusNum <= 0) {
+	    $(".numBox").val(num);
+	   } else {
+	    $(".numBox").val(minusNum);          
+	   }
+	 });
+
+$(".btn-cart").click(function(){
+	  var goods_id = $("#goods_id").val();
+	  var cart_qty = $(".numBox").val();
+	           
+	  var data = {
+	    goods_id : goods_id,
+	    cart_qty : cart_qty
+	    };
+	  
+	  $.ajax({
+	   url : "cart.add",
+	   type : "post",
+	   data : data,
+	   success : function(result){
+	    
+	    if(result == 1) {
+	     alert("카트 담기 성공");
+	     $(".numBox").val("1");
+	    } else {
+	     alert("회원만 사용할 수 있습니다.")
+	     $(".numBox").val("1");
+	    }
+	   },
+	   error : function(){
+	    alert("카트 담기 실패");
+	   }
+	  });
+	 });
+</script>
 </body>
 </html>
