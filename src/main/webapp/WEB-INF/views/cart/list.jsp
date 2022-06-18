@@ -37,11 +37,7 @@
 			<table class="table table-hover"
 				style="width: 70%; margin: auto; border-bottom: 1px solid #D5D5D5;">
 				<thead>
-					<th class="allCheck"><input type="checkbox" name="allCheck"
-						id="allCheck" /> <label for="allCheck">모두 선택</label></th>
-					<th class="delBtn">
-						<button type="button" class="selectDelete_btn">선택 삭제</button>
-					</th>
+					</script>
 					<tr>
 						<th colspan="3" style="text-align: center;">상품명</th>
 						<th>가격</th>
@@ -54,8 +50,6 @@
 						<c:when test="${cartList != null}">
 							<c:forEach items="${cartList}" var="c" varStatus="status">
 								<tr>
-									<td class="checkBox"><input type="checkbox" name="chBox"
-										class="chBox" data-cartNum="${c.cart_id}" /></td>
 									<td><img src="resources/img/${c.goods_img }"
 										class="img-thumbnail" alt="Thumbnail image"
 										style="width: 200px; height: 150px; margin: 10px;"></td>
@@ -119,50 +113,6 @@
 		$(".btn-back_to_shop").click(function() {
 			history.back();
 		});
-
-		// 모두 선택 
-		$("#allCheck").click(function() {
-			var chk = $("#allCheck").prop("checked");
-			if (chk) {
-				$(".chBox").prop("checked", true);
-			} else {
-				$(".chBox").prop("checked", false);
-			}
-		});
-
-		$(".chBox").click(function() {
-			$("#allCheck").prop("checked", false);
-		});
-
-		// 모두, 선택 삭제
-		$(".selectDelete_btn").click(function() {
-			var confirm_val = confirm("정말 삭제하시겠습니까?");
-
-			if (confirm_val) {
-				var checkArr = new Array();
-
-				$("input[class='chBox']:checked").each(function() {
-					checkArr.push($(this).attr("data-cate_id"));
-				});
-
-				$.ajax({
-					url : "deleteCart",
-					type : "post",
-					data : {
-						chbox : checkArr
-					},
-					success : function(result) {
-						if (result == 1) {
-							location.href = "/pt/cart.list";
-						} else {
-							alert("삭제 실패");
-						}
-					}
-				});
-			}
-		});
-		
-		// 삭제 버튼
 		
 	</script>
 </body>
