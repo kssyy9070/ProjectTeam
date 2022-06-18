@@ -22,8 +22,7 @@ public class ReviewDAO {
 		try {
 			String goods_id = req.getParameter("goods_id");
 			r.setGoods_id(goods_id);
-
-			List<Review> rvs = ss.getMapper(ReviewMapper.class).getReview(r);
+			List<Review> rvs =  ss.getMapper(ReviewMapper.class).getReview(r);
 			req.setAttribute("rvs", rvs);
 		} catch (Exception e) {
 			e.printStackTrace();

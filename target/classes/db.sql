@@ -27,10 +27,6 @@ create table tjd_review(
 	tr_img varchar2(200 char) not null, 
 	tr_txt varchar2(250 char) not null,
 	tr_date date not null,
-	constraint review_writer
-		foreign key(tr_writer)
-		references tjd_member(tm_id)
-		on delete cascade,
 	constraint review_no
 		foreign key(tr_writer)
 		references test_goods(goods_id)
@@ -44,3 +40,7 @@ delete from TJD_REVIEW;
 insert into tjd_review values (tjd_review_seq.nextval, 'test2','test2','ddd','asdfasdf',sysdate);
 
 select * from TJD_REVIEW;
+
+select * from tjd_review, tjd_goods
+		where goods_id = tr_g_id and tr_g_id='test123'
+		order by tr_date desc

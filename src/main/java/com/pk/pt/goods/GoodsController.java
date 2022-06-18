@@ -66,7 +66,7 @@ public class GoodsController {
 	}
 	
 	@RequestMapping(value="/goods.detail", method=RequestMethod.GET)
-	public String asdf(Review r ,Goods g,HttpServletRequest req) {
+	public String goGoodsDetail(Review r ,Goods g,HttpServletRequest req) {
 		GDAO.goodsRead(g, req);
 		RDAO.getReview(r, req);
 		req.setAttribute("cp", "goods/detail.jsp");

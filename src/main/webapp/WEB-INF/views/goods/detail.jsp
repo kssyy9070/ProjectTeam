@@ -27,7 +27,6 @@
 	});
 </script>
 <body>
-
 	<input value="${goodsRead.goods_id }" name="goods_id" hidden="hidden">
 	<div class="row">
 		<div class="col-lg-12 col-md-12"
@@ -90,8 +89,6 @@
 		</form>
 	</c:if>
 
-
-
 	<div class="row">
 		<div class="col-lg-12 col-md-12"
 			style="width: 100%; margin-left: 1px; margin-right: 1px; margin-top: 20px;">
@@ -107,20 +104,22 @@
 
 					<c:forEach var="rvs" items="${rvs }">
 						<tr>
+
 							<td align="center" id="txt" class="arrow">${rvs.tr_txt }</td>
 							<td align="center">${rvs.tr_writer }</td>
 							<td align="center"><fmt:formatDate value="${rvs.tr_date }"
 									type="date" pattern="MM-dd" /></td>
-							
+
 						</tr>
 						<tr>
-						<td colspan="2" align="center"><img src="resources/img/review/${rvs.tr_img }"></td>
-						<td>
-						<c:if test="${sessionScope.loginMember.tm_id == rvs.tr_writer}">
+							<td colspan="2" align="center"><img
+								src="resources/img/review/${rvs.tr_img }"></td>
+							<td>
+								<%-- <c:if test="${sessionScope.loginMember.tm_id == rvs.tr_writer}">
 						<a style="text-align: right;" href="review.del">삭제</a>
-						</c:if>
-						
-						</td>
+						</c:if> --%>
+
+							</td>
 						</tr>
 
 					</c:forEach>
