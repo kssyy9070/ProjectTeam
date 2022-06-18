@@ -20,6 +20,7 @@
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="resources/js/kimsyValidChecker.js"></script>
 <script type="text/javascript" src="resources/js/memberCheck.js"></script>
+<script type="text/javascript" src="resources/js/reviewCheck.js"></script>
 <style type="text/css">
 ::-webkit-scrollbar{
 	display: none;

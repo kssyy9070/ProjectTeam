@@ -1,5 +1,6 @@
 package com.pk.pt.review;
 
+import java.math.BigDecimal;
 import java.net.URLEncoder;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class ReviewDAO {
 
 			String path = req.getSession().getServletContext().getRealPath("resources/img/review");
 
-			MultipartRequest mr = new MultipartRequest(req, path, 30 * 1024 * 1024, "UTF-8",
+			MultipartRequest mr = new MultipartRequest(req, path, 300 * 1024 * 1024, "UTF-8",
 					new DefaultFileRenamePolicy());
 			String tr_g_id = mr.getParameter("tr_g_id");
 			String tr_writer = mr.getParameter("tr_writer");
@@ -64,6 +65,22 @@ public class ReviewDAO {
 			req.setAttribute("r", "리뷰 등록 실패");
 		}
 
+	}
+	
+	public void delReview(Review r,HttpServletRequest req) {
+		
+		try {
+			
+			
+//			r.setTr_no(tr_no);
+//			if (ss.getMapper(ReviewMapper.class).delReview(r)==1) {
+//				req.setAttribute("r", "리뷰 삭제 성공");
+//			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("r", "리뷰 삭제 실패");
+		}
+		
 	}
 
 }
