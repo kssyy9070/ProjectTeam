@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pk.pt.CartMapper">
+<mapper namespace="com.pk.pt.cart.CartMapper">
 	<insert id="addCart" parameterType="com.pk.pt.cart.Cart">
-	 insert into tjd_cart values (tbl_cart_seq.nextval, #{cart_qty}, #{goods_id}, SYSDATE)
-</insert>
+		insert into TJD_goods_cart
+		values (TJD_goods_cart_seq.nextval, #{cart_qty},
+		#{tm_id}, #{goods_id},
+		SYSDATE)
+	</insert>
+
+	<select id="cartList" resultType="com.pk.pt.cart.CartList">
+		select
+		row_number() over(order
+		by c.cart_id desc) as num,
+		c.cart_id, c.tm_id, c.goods_id, c.cart_qty,
+		c.reqDate,
+		g.goods_name, g.goods_price, g.goods_img, g.goods_detail
+		from TJD_goods_cart c
+		inner join tjd_goods g
+		on c.goods_id = g.goods_id
+		where c.tm_id = #{tm_id}
+	</select>
+
+	<delete id="deleteCart" parameterType="com.pk.pt.cart.Cart">
+		delete TJD_goods_cart
+		where cart_id = #{cart_id}
+		and tm_id = #{tm_id}
+	</delete>
 </mapper>

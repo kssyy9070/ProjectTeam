@@ -13,11 +13,11 @@
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="resources/css/admin/main.css">
-<script type="text/javascript" src="resources/js/jQuery.js"></script>
 <style type="text/css">
 .header {
 	margin-bottom: 50px;
 }
+
 </style>
 </head>
 <body>
@@ -39,7 +39,8 @@
 		<div class="row goods_detail" style="width: 40%; float: right;">
 			<div class="form-group" style="text-align: center;">
 				<h3 class="page-header">
-					<span>${goodsRead.goods_name}</span><br> <small>${goodsRead.goods_detail}</small>
+					<span>${goodsRead.goods_name}</span><br>
+					<small>${goodsRead.goods_detail}</small>
 				</h3>
 			</div>
 			<div class="form-group" style="text-align: left;">
@@ -73,11 +74,12 @@
 				<c:otherwise></c:otherwise>
 			</c:choose>
 			<div class="form-horizontal" style="text-align: left;">
-				<label>구매수량 : </label>
-				<button type="button" class="minus" id="minus">-</button>
-				<input type="number" class="numBox" min="1" max="${goodsRead.goods_stock}"
-					value="1" readonly="readonly" />
-				<button type="button" class="plus" id="plus">+</button>
+				<label>구매수량 : </label> <select class="form-control"
+					id="select_count">
+					<c:forEach begin="1" end="${goodsRead.goods_stock}" var="count">
+						<option>${count}</option>
+					</c:forEach>
+				</select>
 			</div>
 			<hr>
 
@@ -92,96 +94,67 @@
 			<hr>
 		</div>
 	</div>
-	<script type="text/javascript">
-		$("#minus, #plus")
-				.on(
-						'click',
-						function() {
-							var count = $(".numBox").val();
-							var price = $("#goods_price").val();
-							var opt = $(".opt_select").val();
+<script type="text/javascript">
+$("#select_count").on('blur', function() {
+	var count = $(this).val();
+	var price = $("#goods_price").val();
+	var opt = $(".opt_select").val();
+	
+	
+	if (count*price >= 30000) {
+		var shipping = '무료배송';
+		var finalPrice = count*price;
+	} else {
+		var shipping = 2500;
+		var finalPrice = (count*price) + shipping;
+	}
+	
+	var str = '';
+	
+	str += '<p><label>수량 : </label><span>&nbsp;' + count + '</span>&nbsp;&nbsp;&nbsp;';	
+	
+	if (opt != 'S' && opt != 'M' && opt != 'L') {
+		str += '<lable></lable>';
+	} else {
+		str += '<label>옵션 : </label><span>&nbsp;' + opt + '</span>&nbsp;&nbsp;&nbsp;';	
+	}
+	
+	str += '<label>배송비 : </label><span>&nbsp;' + shipping + '</span>&nbsp;&nbsp;&nbsp;';
+	str	+= '<label>가격 : </label><span>&nbsp;' + price + ' 원</span></p>';
+	str += '<h4><label>결제금액 : </label><span>&nbsp;' + finalPrice + ' 원</span></h4>'; 
+	str += '<span class="glyphicon glyphicon-exclamation-remove"></span>';
+	
+	$(".selected_option").html(str);
+});
 
-							if (count * price >= 30000) {
-								var shipping = '무료배송';
-								var finalPrice = count * price;
-							} else {
-								var shipping = 2500;
-								var finalPrice = (count * price) + shipping;
-							}
-
-							var str = '';
-
-							str += '<p><label>수량 : </label><span>&nbsp;'
-									+ count + '</span>&nbsp;&nbsp;&nbsp;';
-
-							if (opt != 'S' && opt != 'M' && opt != 'L') {
-								str += '<lable></lable>';
-							} else {
-								str += '<label>옵션 : </label><span>&nbsp;' + opt
-										+ '</span>&nbsp;&nbsp;&nbsp;';
-							}
-
-							str += '<label>배송비 : </label><span>&nbsp;'
-									+ shipping + '</span>&nbsp;&nbsp;&nbsp;';
-							str += '<label>가격 : </label><span>&nbsp;' + price
-									+ ' 원</span></p>';
-							str += '<h4><label>결제금액 : </label><span>&nbsp;'
-									+ finalPrice + ' 원</span></h4>';
-							str += '<span class="glyphicon glyphicon-exclamation-remove"></span>';
-
-							$(".selected_option").html(str);
-						});
-
-		$(".plus").click(function(){
-			   var num = $(".numBox").val();
-			   var plusNum = Number(num) + 1;
-			   
-			   if(plusNum >= ${goodsRead.goods_stock}) {
-			    $(".numBox").val(num);
-			   } else {
-			    $(".numBox").val(plusNum);          
-			   }
-			 });
-			  
-		$(".minus").click(function(){
-			   var num = $(".numBox").val();
-			   var minusNum = Number(num) - 1;
-			   
-			   if(minusNum <= 0) {
-			    $(".numBox").val(num);
-			   } else {
-			    $(".numBox").val(minusNum);          
-			   }
-			 });
-
-		$(".btn-cart").click(function(){
-			  var goods_id = $("#goods_id").val();
-			  var cart_qty = $(".numBox").val();
-			           
-			  var data = {
-			    goods_id : goods_id,
-			    cart_qty : cart_qty
-			    };
-			  
-			  $.ajax({
-			   url : "cart.add",
-			   type : "post",
-			   data : data,
-			   success : function(result){
-			    
-			    if(result == 1) {
-			     alert("카트 담기 성공");
-			     $(".numBox").val("1");
-			    } else {
-			     alert("회원만 사용할 수 있습니다.")
-			     $(".numBox").val("1");
-			    }
-			   },
-			   error : function(){
-			    alert("카트 담기 실패");
-			   }
-			  });
-			 });
-	</script>
+$(".addCart_btn").click(function(){
+	  var goods_id = $("#goods_id").val();
+	  var goods_stock = $(".numBox").val();
+	           
+	  var data = {
+	    gdsNum : gdsNum,
+	    cartStock : cartStock
+	    };
+	  
+	  $.ajax({
+	   url : "/shop/view/addCart",
+	   type : "post",
+	   data : data,
+	   success : function(result){
+	    
+	    if(result == 1) {
+	     alert("카트 담기 성공");
+	     $(".numBox").val("1");
+	    } else {
+	     alert("회원만 사용할 수 있습니다.")
+	     $(".numBox").val("1");
+	    }
+	   },
+	   error : function(){
+	    alert("카트 담기 실패");
+	   }
+	  });
+	 });
+</script>
 </body>
 </html>

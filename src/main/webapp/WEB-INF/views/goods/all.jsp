@@ -12,8 +12,6 @@
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/js/jQuery.js"></script>
-<style type="text/css">
-</style>
 </head>
 <body>
 	<%@include file="../includes/header.jsp"%>
@@ -28,6 +26,24 @@
 				<option value="/pt/shop.top.go">2. 상의</option>
 				<option value="/pt/shop.bottom.go">3. 하의</option>
 			</select>
+			</div>
+			<div class="row goods" align="center">
+					<c:forEach var="g" items="${goods}">
+					<div class="scale col-lg-3 col-md-4 float-start" align="center">
+						<a href="goods.view?goods_id=${g.goods_id }" class="thumbnail"> <img src="resources/img/${g.goods_img }"
+							class="img-thumbnail" alt="Thumbnail image"
+							style="width: 250px; height: 200px; margin: 20px;"></a>
+						<h3>${g.goods_name}</h3>
+						<h3>${g.goods_price}<span>원</span>
+						</h3>
+						<p>
+							<a href="#" class="btn btn-primary" role="button">구입하기</a> 
+							<a href="#" class="btn btn-default" role="button">장바구니</a>
+						</p>
+					</div>
+					</c:forEach>
+			</div>
+
 		</div>
 		<div class="row goods" align="center">
 			<c:forEach var="g" items="${goods}">
