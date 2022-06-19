@@ -2,7 +2,7 @@ package com.pk.pt.order;
 
 import java.util.Date;
 
-public class Order {
+public class OrderList {
 	
 	private String order_id;
 	private String tm_id;
@@ -16,12 +16,18 @@ public class Order {
 	private int order_qty;
 	private String goods_id;
 	
-	public Order() {
+	private String goods_name;
+	private String goods_img;
+	private String goods_detail;
+	private String goods_price;
+	
+	public OrderList() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Order(String order_id, String tm_id, String tm_name, String tm_addr1, String tm_addr2, String tm_addr3,
-			String tm_phone, int totalAmount, Date orderDate, int order_qty, String goods_id) {
+	public OrderList(String order_id, String tm_id, String tm_name, String tm_addr1, String tm_addr2, String tm_addr3,
+			String tm_phone, int totalAmount, Date orderDate, int order_qty, String goods_id, String goods_name,
+			String goods_img, String goods_detail, String goods_price) {
 		super();
 		this.order_id = order_id;
 		this.tm_id = tm_id;
@@ -34,6 +40,10 @@ public class Order {
 		this.orderDate = orderDate;
 		this.order_qty = order_qty;
 		this.goods_id = goods_id;
+		this.goods_name = goods_name;
+		this.goods_img = goods_img;
+		this.goods_detail = goods_detail;
+		this.goods_price = goods_price;
 	}
 
 	public String getOrder_id() {
@@ -123,6 +133,39 @@ public class Order {
 	public void setGoods_id(String goods_id) {
 		this.goods_id = goods_id;
 	}
+
+	public String getGoods_name() {
+		return goods_name;
+	}
+
+	public void setGoods_name(String goods_name) {
+		this.goods_name = goods_name;
+	}
+
+	public String getGoods_img() {
+		return goods_img;
+	}
+
+	public void setGoods_img(String goods_img) {
+		this.goods_img = goods_img;
+	}
+
+	public String getGoods_detail() {
+		return goods_detail;
+	}
+
+	public void setGoods_detail(String goods_detail) {
+		this.goods_detail = goods_detail;
+	}
+
+	public String getGoods_price() {
+		return goods_price;
+	}
+
+	public void setGoods_price(String goods_price) {
+		this.goods_price = goods_price;
+	}
+	
 	
 	
 	

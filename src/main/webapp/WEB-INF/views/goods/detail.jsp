@@ -55,7 +55,7 @@
 				<button type="button" class="plus" id="plus">+</button>
 
 				<button class="btn btn-default btn-cart">ADD TO CART</button>
-				<p class="btn btn-dark" style="width: 100%;">BUY NOW</p>
+				<button class="btn btn-default btn-dark" style="width: 100%;">BUY NOW</button>
 
 			</div>
 
@@ -183,6 +183,13 @@ $(".btn-cart").click(function(){
 	   }
 	  });
 	 });
+	 
+
+$(".btn-dark").click(function() {
+
+	location.href = "order.order"
+
+});
 </script>
 </body>
 </html>

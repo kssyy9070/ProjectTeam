@@ -27,7 +27,7 @@
 				<li><a href="admin.members.go">회원 관리</a></li>
 				<li><a href="admin.list.go">상품 목록</a></li>
 				<li><a href="admin.reg">상품 등록</a></li>
-				
+				<li><a href="admin.orderList">주문 리스트</a></li>
 			</ul>
 		</div>
 		<!-- /사이드바 -->

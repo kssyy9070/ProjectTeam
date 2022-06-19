@@ -52,8 +52,7 @@
 						<h3>${g.goods_price}<span>원</span>
 						</h3>
 						<p>
-							<a href="#" class="btn btn-primary" role="button">구입하기</a> <a
-								href="#" class="btn btn-default" role="button">장바구니</a>
+							<a href="goods.detail?goods_id=${g.goods_id }" class="btn btn-primary" role="button">구입하기</a> 
 						</p>
 					</div>
 					</c:forEach>

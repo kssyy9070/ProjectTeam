@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.pk.pt.goods.Goods;
 import com.pk.pt.goods.GoodsDAO;
 import com.pk.pt.member.MemberDAO;
+import com.pk.pt.order.OrderDAO;
 
 
 @Controller
@@ -20,6 +21,9 @@ public class AdminController {
 	
 	@Autowired
 	private GoodsDAO GDAO;
+	
+	@Autowired
+	private OrderDAO ODAO;
 	
 	@RequestMapping(value="/adminPage.go", method=RequestMethod.GET)
 	public String goAdminMain(HttpServletRequest req) {
@@ -47,6 +51,14 @@ public class AdminController {
 		MDAO.getAllMember(req);
 	
 		return "admin/members";		
+	}
+	
+	@RequestMapping(value="/admin.orderList", method=RequestMethod.GET)
+	public String orderList(HttpServletRequest req) {
+		
+		ODAO.getAllOrder(req);
+	
+		return "admin/orderList";		
 	}
 	
 	
