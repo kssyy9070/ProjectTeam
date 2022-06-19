@@ -47,6 +47,7 @@
 				<beans:value>classpath:goodsMapper.xml</beans:value>
 				<beans:value>classpath:cartMapper.xml</beans:value>
 				<beans:value>classpath:reviewMapper.xml</beans:value>
+				<beans:value>classpath:orderMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>

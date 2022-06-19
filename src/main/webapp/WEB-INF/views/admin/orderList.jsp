@@ -24,7 +24,8 @@
       	<li><a href="admin.members.go">회원 관리</a></li>
 		<li><a href="admin.list.go">상품 목록</a></li>
 		<li><a href="admin.reg">상품 등록</a></li>
- 		<li><a href="admin.orderList">주문 리스트</a></li>
+		<li><a href="admin.orderList">주문 리스트</a></li>
+ 
     </ul>
   </div>
   <!-- /사이드바 -->
@@ -32,32 +33,43 @@
   <!-- 본문 -->
   <div id="page-content-wrapper">
     <div class="container-fluid">
-      <h1 class="jumbotron" style="text-align: center; margin: 50px 0;">회원 리스트</h1>
+      <h1 class="jumbotron" style="text-align: center; margin: 50px 0;">주문 리스트</h1>
 		<table class="table table-hover">
 			<thead>
 				<tr>
+					<th>주문ID</th>
 					<th>회원ID</th>
-					<th>이름</th>
+					<th>회원 이름</th>
 					<th>주소1</th>
 					<th>주소2</th>
 					<th>주소3</th>
 					<th>전화번호</th>
+					<th>결제 금액</th>
+					<th>결제 날짜</th>
+					<th>구매 수량</th>
+					<th>상품ID</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="m" items="${members}" >
+				<c:forEach var="o" items="${orders}" >
 					<tr>
-						<td>${m.tm_id}</td>
-						<td>${m.tm_name}</td>
-						<td>${m.tm_addr1}</td>
-						<td>${m.tm_addr2}</td>
-						<td>${m.tm_addr3}</td>
-						<td>${m.tm_phone}</td>
+						<td>${o.order_id}</td>
+						<td>${o.tm_id}</td>
+						<td>${o.tm_name}</td>
+						<td>${o.tm_addr1}</td>
+						<td>${o.tm_addr2}</td>
+						<td>${o.tm_addr3}</td>
+						<td>${o.tm_phone}</td>
+						<td>${o.totalAmount}</td>
+						<td><fmt:formatDate value="${o.orderDate}"
+										type="date" pattern="yyyy-MM-dd" /></td>
+						<td>${o.order_qty}</td>
+						<td>${o.goods_id}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
     </div>
   </div>
-`</body>
+</body>
 </html>

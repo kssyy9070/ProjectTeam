@@ -18,15 +18,6 @@
 	float: right;
 	text-align: right;
 }
-
-.checkBox {
-	float: left;
-	width: 10px;
-}
-
-.checkBox input {
-	height: 16px;
-}
 </style>
 </head>
 <body>
@@ -39,7 +30,7 @@
 				<thead>
 					</script>
 					<tr>
-						<th colspan="3" style="text-align: center;">상품명</th>
+						<th colspan="2" style="text-align: center;">상품명</th>
 						<th>가격</th>
 						<th>수량</th>
 						<th>상품정보</th>
@@ -105,13 +96,17 @@
 			</table>
 		</div>
 		<div class="row" style="text-align: center; margin: 80px 0;">
-			<button class="btn btn-default">주문하기</button>
+			<button class="btn btn-default btn-order">주문하기</button>
 			<button class="btn btn-default btn-back_to_shop">쇼핑을 계속하기</button>
 		</div>
 	</div>
 	<script type="text/javascript">
 		$(".btn-back_to_shop").click(function() {
 			history.back();
+		});
+		
+		$(".btn-order").click(function() {
+			location.href = "order.order"
 		});
 		
 	</script>

@@ -17,9 +17,9 @@ INSERT INTO TJD_GOODS (goods_id, goods_name, goods_price) VALUES ('test_goods_id
 
 insert into TJD_GOODS values('test_product_id', 'test_product_name', 50000, 0, '상의', '파란색', sysdate, sysdate)
 
-select * from TJD_goods_cart
+select * from TJD_order
 
-drop table TJD_order_detail
+drop table TJD_order
 
 create table TJD_goods_cart(
 	cart_id number(10) primary key,
@@ -49,6 +49,8 @@ create table TJD_order(
 	tm_addr3 varchar2(100 char) not null,
 	tm_phone varchar2(11) not null,
 	totalAmount number(8) not null,
+	order_qty number(2),
+	goods_id varchar2(100 char) not null,
 	orderDate Date default sysdate,
 	constraint order_fk_tm_id 
 		foreign key(tm_id)
@@ -59,13 +61,8 @@ create table TJD_order(
 create table TJD_order_detail (
 	o_d_num number(8) primary key,
 	order_id varchar2(50 char) not null,
-	order_qyt number(2) not null,
+	order_qty number(2) not null,
 	goods_id varchar2(100 char) not null,
-	selected_Opt varchar2(100 char),
-	deliver_msg varchar2(300 char),
-	deliver_situ number(2),
-	billingDate Date default sysdate,
-	cal_info varchar2(20 char),
 	constraint order_fk_detail
 		foreign key(order_id)
 		references TJD_order(order_id)
@@ -75,7 +72,7 @@ create table TJD_order_detail (
 create sequence TJD_order_detail_seq;
 
 
-
+ALTER TABLE TJD_order DROP CONSTRAINT order_fk_tm_id;
 
 
 

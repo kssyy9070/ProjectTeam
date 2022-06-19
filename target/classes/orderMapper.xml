@@ -1,18 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pk.pt.order.OrderMapper">
-	<insert id="orderInfo">
-		insert into TJD_order(order_id, tm_id, tm_name,
-		tm_addr1, tm_addr2,
-		tm_addr3, tm_phone, totalAmount)
+	<insert id="orderInfo" parameterType="com.pk.pt.order.Order">
+		insert into TJD_order
 		values(#{order_id}, #{tm_id}, #{tm_name}, #{tm_addr1}, #{tm_addr2},
 		#{tm_addr3},
-		#{tm_phone}, #{totalAmount})
+		#{tm_phone}, #{totalAmount}, #{order_qty}, #{goods_id},
+		SYSDATE)
 	</insert>
 
-	<insert id="orderDetails">
-		insert into TJD_order_detail(o_d_num, order_id, order_qyt, goods_id, selected_Opt, deliver_msg, deliver_situ, billingDate, cal_info)
-		select tbl_order_details_seq.nextval, #{orderId}, gdsNum, cartStock
-		from tbl_cart
+	<insert id="orderDetails"
+		parameterType="com.pk.pt.order.OrderDetail">
+		insert into TJD_order_detail(o_d_num, order_id,
+		order_qyt, goods_id)
+		select TJD_order_detail_seq.nextval, #{order_id},
+		#{order_qyt}, #{goods_id}
+		from TJD_goods_cart
 	</insert>
+
+	<select id="getAllOrder" resultType="com.pk.pt.order.Order">
+
+		select * from TJD_order order by orderDate ASC
+
+	</select>
+
+	<select id="orderView" resultType="com.pk.pt.order.OrderList">
+		select
+		o.order_id, o.tm_id, o.tm_name, o.tm_addr1, o.tm_addr2, o.tm_addr3,
+		o.tm_phone, o.totalAmount, o.orderDate, o.order_qty, o.goods_id,
+		g.goods_name, g.goods_img, g.goods_detail, g.goods_price
+		from TJD_order o
+		inner join TJD_GOODS g
+		on o.goods_id = g.goods_id
+		where o.tm_id = #{tm_id}
+	</select>
+
 </mapper>
